@@ -13,8 +13,8 @@
         <!-- Menú para ESCRITORIO (pantallas grandes) -->
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
-                
-            
+              <a class="nav-link" href="register">registrar</a>  
+            <a class="nav-link" href="login">Usuario</a>
                 <a class="nav-link" href="contacto">Contacto</a>
                 <a class="nav-link" href="comercializacion">Comercializacion</a>
                 <a class="nav-link" href="aboutUs">Sobre Nosotros</a>
