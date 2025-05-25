@@ -1,24 +1,27 @@
 <?php
-namespace App\Models; 
+
+namespace App\Models;
+
 use CodeIgniter\Model;
 
 /***Model es una extension de BaseModel para poder utilizar distintas funciones */
-class PersonasModel extends Model{
+class PersonasModel extends Model
+{
 
- protected $table = 'personas';  /**nombre de la tabla */
- protected $primaryKey = 'id_persona';
+    protected $table = 'personas';
+    /**nombre de la tabla */
+    protected $primaryKey = 'id_persona';
 
- protected $allowedFields = [
-    'dni',
-    'nombre',
-    'apellido',
-    'id_domicilio',
-    'telefono'
-     ];
+    protected $allowedFields = [
+        'dni',
+        'nombre',
+        'apellido',
+        'id_domicilio',
+        'telefono'
+    ];
 
- protected $useTimestamps = false; // Si no usas timestamps, déjalo en false
+    protected $useTimestamps = false; // Si no usas timestamps, déjalo en false
 
- protected $returnType = 'array'; // O 'object' si prefieres objetos
+    protected $returnType = 'array'; // O 'object' si prefieres objetos
 
 }
-?>
