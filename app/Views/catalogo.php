@@ -1,6 +1,6 @@
 <div class="container mt-5 my-5 mt-carousel">
     <h1 class="mb-4">Lista de Productos</h1>
-
+      <a href="<?= base_url('agregarproducto') ?>" class="btn btn-success">Agregar</a>
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>

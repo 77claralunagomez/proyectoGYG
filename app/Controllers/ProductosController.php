@@ -18,4 +18,11 @@ class ProductosController extends BaseController
             . view('catalogo', ['productos' => $resultado])
             . view('footer');
     }
+
+    public function agregar(){
+        
+        return view('head')
+            . view('navbar')
+            . view('agregarproducto');
+    }
 }

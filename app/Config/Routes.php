@@ -12,4 +12,6 @@ $routes->get('aboutUs', 'Home::aboutUs');
 $routes->get('terminos', 'Home::terminos');
 /*Catalogo */
 $routes->get('catalogo', 'ProductosController::index');
+$routes->get('agregarproducto', 'ProductosController::agregar');
+
 /*Rutas para el login */
