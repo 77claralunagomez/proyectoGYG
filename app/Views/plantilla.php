@@ -3,11 +3,17 @@
     <head>
         <meta charset="utf-8">
         <meta name= "viewport" content="width-device-width, initial-scale-1">
-        <title>Bootstrap demo</title>
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" integrity=" " crossorigin="">
+        <title>opyicagyg</title>
+        <link href="<?= base_url('assets/css/bootstrap.min.css')?>" rel="stylesheet" integrity=" " crossorigin="">
+        <link href="<?= base_url('assets/css/miestilo.css')?>" rel= "styleesheet">
+    
     </head>
     <body>
-        <h1>Hola Mundo</h1>
-        <script src="assets/js/bootstrap.bundle.js" rel="stylesheet" integrity=" " crossorigin=""></script>
+        <div class="container">
+            <?= $this ->renderSection('content'); ?>
+        </div>
+
+
+        <script src="<?= base_url('assets/js/bootstrap.bundle.js')?>" rel="stylesheet" integrity=" " crossorigin=""></script>
     </body>    
 </html>

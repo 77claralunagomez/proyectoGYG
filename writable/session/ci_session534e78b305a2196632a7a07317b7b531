@@ -1,0 +1,7 @@
+__ci_last_regenerate|i:1748560673;_ci_previous_url|s:62:"http://localhost/proyecto_GonzalezMauro_GomezClara/ /registrar";_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:4:{s:14:"csrf_test_name";s:32:"bb73763ebf8759e8e94685bf13218108";s:5:"email";s:23:"claragomez968@gmail.com";s:4:"pass";s:2:"12";s:10:"repassword";s:5:"12321";}}__ci_vars|a:3:{s:13:"_ci_old_input";s:3:"new";s:21:"_ci_validation_errors";s:3:"new";s:6:"errors";s:3:"new";}_ci_validation_errors|a:2:{s:4:"pass";s:55:"The pass field must be at least 5 characters in length.";s:10:"repassword";s:51:"The repassword field does not match the pass field.";}errors|s:202:"	<div class="errors" role="alert">
+		<ul>
+					<li>The pass field must be at least 5 characters in length.</li>
+					<li>The repassword field does not match the pass field.</li>
+				</ul>
+	</div>
+";
