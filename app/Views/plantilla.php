@@ -9,7 +9,9 @@
     
     </head>
     <body>
-        <div class="container">
+        <?= view('navbar'); ?>
+
+        <div class="container mt-5">
             <?= $this ->renderSection('content'); ?>
         </div>
 

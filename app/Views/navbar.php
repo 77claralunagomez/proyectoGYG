@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="catalogo">Catalogo</a> 
-              <a class="nav-link" href="register">registrar</a>  
+              <a class="nav-link" href="registrar">registrar</a>  
             <a class="nav-link" href="login">Usuario</a>
                 <a class="nav-link" href="contacto">Contacto</a>
                 <a class="nav-link" href="comercializacion">Comercializacion</a>
