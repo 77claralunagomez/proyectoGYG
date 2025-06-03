@@ -10,7 +10,7 @@
 
             <div class="mb-3">
                 <label class="mb-2" for="email">Correo electrónico</label>
-                <input type="email" class="form-control" name="email" id="email" value="" required>
+                <input type="email" class="form-control" name="email" id="email" value="<?= set_value('email'); ?>" required>
             </div>
 
             <div class="mb-3">

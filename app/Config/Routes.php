@@ -15,4 +15,5 @@ $routes->get('catalogo', 'ProductosController::index');
 $routes->get('agregarproducto', 'ProductosController::agregar');
 $routes->get('registrar', 'UsuariosController::index');
 $routes->post('registrar', 'UsuariosController::crear');
+$routes->get('login', 'LoginController::index'); // Ajusta según tu controlador de login
 /*Rutas para el login */

@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\UsuariosModel;
+
 class UsuariosController extends BaseController
 {
     protected $helpers = ['form'];
@@ -22,5 +24,7 @@ class UsuariosController extends BaseController
         if(!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->listErrors());
         }
+
     }
+
 }
