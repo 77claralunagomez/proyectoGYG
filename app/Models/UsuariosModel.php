@@ -10,10 +10,11 @@ class UsuariosModel extends Model{
  protected $primaryKey = 'id_usuarios';
 
  protected $allowedFields = [
-    'id_personas',
-    'id_rol',
+    'nombre',
+    'apellido',
     'email',
     'pass',
+    'rol',
     'activo'
      ];
 
