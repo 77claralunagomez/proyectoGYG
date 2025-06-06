@@ -13,7 +13,11 @@ $routes->get('terminos', 'Home::terminos');
 /*Catalogo */
 $routes->get('catalogo', 'ProductosController::index');
 $routes->get('agregarproducto', 'ProductosController::agregar');
+
+/*registrarse */
 $routes->get('registrar', 'UsuariosController::index');
 $routes->post('registrar', 'UsuariosController::crear');
-$routes->get('login', 'LoginController::index'); // Ajusta según tu controlador de login
-/*Rutas para el login */
+
+/* Inicio de sesion */
+$routes->get('iniciarsesion', 'IniciarSesionController::index'); // Ajusta según tu controlador de login
+$routes->post('autenticar', 'IniciarSesionController::autenticar'); 

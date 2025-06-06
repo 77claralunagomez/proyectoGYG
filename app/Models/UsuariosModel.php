@@ -22,5 +22,14 @@ class UsuariosModel extends Model{
 
  protected $returnType = 'array'; // O 'object' si prefieres objetos
 
+ public function validarUsuario($email, $pass){
+    $email = $this->where(['email' => $email, 'activo' => 1])->first();
+    if($email && password_verify($pass, $email['pass'])){
+        return $email;
+    }
+
+    return null;
+    
+    }   
 }
 ?>
