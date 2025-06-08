@@ -1,5 +1,6 @@
 
     <!-- Carrousel-->
+     
     <section class="container-fluid mt-carousel col-12">
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
 
@@ -45,6 +46,12 @@
             </div>
         </div>
     </section>
+
+    <?php if(session()->get('logger_in')): ?>
+    <p>Bienvenido, <?= session()->get('nombre') ?> (<?= session()->get('email') ?>)</p>
+<?php else: ?>
+    <p>No has iniciado sesión.</p>
+<?php endif; ?>
 
     <!-- PRODUCTOS DESTACADOS -->
     <section class="bg-light my-3 py-5 px-5">
