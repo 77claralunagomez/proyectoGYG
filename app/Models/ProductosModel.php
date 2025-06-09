@@ -20,7 +20,6 @@ class ProductosModel extends Model
         'nombre',
         'descripcion',
         'precio',
-        'precio_mayorista',
         'cantidad',
         'url_imagen',
         'activo'

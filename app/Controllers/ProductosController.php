@@ -6,6 +6,7 @@ use App\Models\ProductosModel;
 
 class ProductosController extends BaseController
 {
+    protected $helpers = ['form'];
     public function index()
     {
         $productoModel = new ProductosModel();
@@ -24,5 +25,24 @@ class ProductosController extends BaseController
         return view('head')
             . view('navbar')
             . view('agregarproducto');
+    }
+
+    public function nuevoproducto(){
+     
+        reglas = [
+
+        'nombre',
+        'descripcion',
+        'precio',
+        'cantidad',
+        'url_imagen',
+        'categoria'
+        ]
+
+
+    }
+
+    public function create(){
+
     }
 }

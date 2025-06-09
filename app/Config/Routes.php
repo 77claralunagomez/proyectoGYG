@@ -14,6 +14,7 @@ $routes->get('terminos', 'Home::terminos');
 /*Catalogo */
 $routes->get('catalogo', 'ProductosController::index');
 $routes->get('agregarproducto', 'ProductosController::agregar');
+$routes->post('nuevoproducto', 'ProductosController::nuevoproducto');
 
 /*registrarse */
 $routes->get('registrar', 'UsuariosController::index');
