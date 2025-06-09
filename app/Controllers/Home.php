@@ -10,7 +10,6 @@ class Home extends BaseController
         echo view('navbar');
         echo view('index');
         echo view('comercializacion');
-        echo view('contacto');
         echo view('aboutUs');
         echo view('footer');
     }

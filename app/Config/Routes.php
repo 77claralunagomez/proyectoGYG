@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\IniciarSesionController;
 use CodeIgniter\Router\RouteCollection;
 
 /**
@@ -21,3 +22,4 @@ $routes->post('registrar', 'UsuariosController::crear');
 /* Inicio de sesion */
 $routes->get('iniciarsesion', 'IniciarSesionController::index'); // Ajusta según tu controlador de login
 $routes->post('autenticar', 'IniciarSesionController::autenticar'); 
+$routes->get('cerrarSesion', 'IniciarSesionController::cerrarSesion');

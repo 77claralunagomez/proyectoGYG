@@ -4,7 +4,7 @@
         <a class="navbar-brand" href="<?= base_url() ?>"><img src="assets/img/svg/icon_eyeglasses.svg"
                 width="38" height="38"> G&G Óptica</a>
 
-        <?php if (session()->get('logger_in')): ?>
+        <?php if (session()->get('logged_in')): ?>
             <p class="text-light">Bienvenido, <?= session()->get('nombre') ?></p>
         <?php endif; ?>
 

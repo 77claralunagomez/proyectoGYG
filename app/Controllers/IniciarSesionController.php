@@ -36,12 +36,19 @@ class IniciarSesionController extends BaseController
 
      private function setSession($userData){
      $data = [
-       'logger_in' => true,
+       'logged_in' => true,
        'email' => $userData['email'],
        'nombre' => $userData['nombre']
      ];
       $this->session->set($data);
     }
 
+    public function cerrarSesion(){
+      if($this->session->get('logged_in')){
+           $this->session->destroy();}
 
+           return redirect()->to(base_url());
+ 
+
+    }
 }
