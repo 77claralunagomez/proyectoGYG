@@ -17,6 +17,7 @@
                         <td><?= esc($producto['nombre']) ?></td>
                         <td>$<?= number_format($producto['precio'], 2) ?></td>
                         <td><?= esc($producto['cantidad']) ?></td>
+                        <td><<img src="<?= base_url($producto['url_imagen']) ?>" class="img-thumbnail" alt="Producto"></td>
                     </tr>
 
                     </tr>
