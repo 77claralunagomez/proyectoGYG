@@ -12,17 +12,17 @@ class ProductosModel extends Model
 
     protected $table = 'productos';
     /**nombre de la tabla */
-    protected $primaryKey = 'id_productos';
+    protected $primaryKey = 'id_producto';
     protected $returnType = 'array'; // O 'object' si prefieres objetos
 
     protected $allowedFields = [
-        'id_categoria',
         'nombre',
         'descripcion',
         'precio',
         'cantidad',
         'url_imagen',
-        'activo'
+        'activo',
+        'categoria'
     ];
      
     protected $useSoftDeletes= false;

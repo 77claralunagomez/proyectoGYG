@@ -14,10 +14,7 @@ class ProductosController extends BaseController
         $resultado = $productoModel->where('activo', 1)->findAll(); // devuelve cada uno de los productos de array
 
         // Puedes pasar los datos a la vista
-        return view('head')
-            . view('navbar')
-            . view('catalogo', ['productos' => $resultado])
-            . view('footer');
+        return view('catalogo', ['productos' => $resultado]);
     }
 
     public function agregar(){
@@ -65,6 +62,16 @@ class ProductosController extends BaseController
 
         return redirect()->to('catalogo')->with('mensaje', 'Producto agregado con éxito');
 
+    }
+
+    public function eliminarProducto()
+    {
+        $id = $this->request->getPost('id');
+
+        $productoModel = new ProductosModel();
+        $productoModel->delete($id);
+
+        return redirect()->to('catalogo')->with('mensaje', 'Producto eliminado correctamente');
     }
 
 }
