@@ -24,9 +24,8 @@
                             <td><?= esc($producto['cantidad']) ?></td>
                             <td><img src="<?= base_url($producto['url_imagen']) ?>" class="img-thumbnail" alt="Producto"></td>
                             <td>                           
-                                    <a href="<?= base_url('editar') ?>" class="btn btn-warning btn-sm me-2">
-                                        Editar
-                                    </a>
+                                    <a href="<?= base_url('editarproducto/' .$producto['id_producto']) ?>" class="btn btn-warning btn-sm me-2">
+                                        Editar</a>
                                     <!-- Botón Eliminar -->
                                     <button type="button"
                                             class="btn btn-danger btn-sm"

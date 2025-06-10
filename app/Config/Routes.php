@@ -16,6 +16,8 @@ $routes->get('catalogo', 'ProductosController::index');
 $routes->get('agregarproducto', 'ProductosController::agregar');
 $routes->post('nuevoproducto', 'ProductosController::nuevoproducto');
 $routes->post('eliminarProducto', 'ProductosController::eliminarProducto');
+$routes->get('editarproducto/(:num)', 'ProductosController::editarproducto/$1');
+
 
 /*registrarse */
 $routes->get('registrar', 'UsuariosController::index');

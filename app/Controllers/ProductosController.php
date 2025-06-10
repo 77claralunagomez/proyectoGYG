@@ -21,7 +21,8 @@ class ProductosController extends BaseController
         
         return view('head')
             . view('navbar')
-            . view('agregarproducto');
+            . view('agregarproducto')
+            . view('footer');
     }
 
     public function nuevoproducto(){
@@ -72,6 +73,18 @@ class ProductosController extends BaseController
         $productoModel->delete($id);
 
         return redirect()->to('catalogo')->with('mensaje', 'Producto eliminado correctamente');
+    }
+
+    public function editarproducto($id = null) {
+       
+       //if($id == null){}
+        $productoModel = new ProductosModel();
+        $resultado = $productoModel->where('activo', 1)->findAll();
+         return view('head')
+            . view('navbar')
+            . view('editarproducto',$resultado)
+            . view('footer');
+
     }
 
 }
