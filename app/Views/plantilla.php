@@ -5,7 +5,8 @@
         <meta name= "viewport" content="width-device-width, initial-scale-1">
         <title>OpticaGyG</title>
         <link href="<?= base_url('assets/css/bootstrap.min.css')?>" rel="stylesheet" integrity=" " crossorigin="">
-        <link href="<?= base_url('assets/css/miestilo.css')?>" rel= "styleesheet">
+        <link href="<?= base_url('assets/css/miestilo.css') ?>" rel="stylesheet">
+
     
     </head>
     <body>

@@ -7,6 +7,7 @@ use App\Models\ProductosModel;
 class ProductosController extends BaseController
 {
     protected $helpers = ['form', 'url'];
+
     public function index()
     {
         $productoModel = new ProductosModel();
@@ -21,8 +22,7 @@ class ProductosController extends BaseController
         
         return view('head')
             . view('navbar')
-            . view('agregarproducto')
-            . view('footer');
+            . view('agregarproducto');
     }
 
     public function nuevoproducto(){
@@ -77,13 +77,17 @@ class ProductosController extends BaseController
 
     public function editarproducto($id = null) {
        
-       //if($id == null){}
+       if($id == null){
+            return redirect()->to('catalogo');
+       }
+
         $productoModel = new ProductosModel();
-        $resultado = $productoModel->where('activo', 1)->findAll();
+
+        $resultado['producto'] = $productoModel->find($id); 
+
          return view('head')
             . view('navbar')
-            . view('editarproducto',$resultado)
-            . view('footer');
+            . view('editarproducto',$resultado);
 
     }
 

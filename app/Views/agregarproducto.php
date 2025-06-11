@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="col-12">
-                    <a href="index.html" class="btn btn-secondary">Regresar</a>
+                    <a href="catalogo" class="btn btn-secondary">Regresar</a>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
 

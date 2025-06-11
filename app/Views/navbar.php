@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top py-3 navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container-fluid d-flex align-items-center">
 
-        <a class="navbar-brand" href="<?= base_url() ?>"><img src="assets/img/svg/icon_eyeglasses.svg"
+        <a class="navbar-brand" href="<?= base_url() ?>"><img src="<?= base_url('assets/img/svg/icon_eyeglasses.svg') ?>"
                 width="38" height="38"> G&G Óptica</a>
 
         <?php if (session()->get('logged_in')): ?>
@@ -17,14 +17,14 @@
         <!-- Menú para ESCRITORIO (pantallas grandes) -->
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="catalogo">Catalogo</a>
-                <a class="nav-link" href="iniciarsesion">Iniciar Sesion</a>
-                <a class="nav-link" href="contacto">Contacto</a>
-                <a class="nav-link" href="comercializacion">Comercializacion</a>
-                <a class="nav-link" href="aboutUs">Sobre Nosotros</a>
-                <a class="nav-link" href="terminos">Terminos y Condiciones</a>
-                <a href=<?= base_url('cerrarSesion');?> class="btn btn-primary btn-sm" >Cerrar sesion</a>
+                <a class="nav-link" href="<?= base_url('catalogo') ?>">Catálogo</a>
+                <a class="nav-link" href="<?= base_url('contacto') ?>">Contacto</a>
+                <a class="nav-link" href="<?= base_url('comercializacion') ?>">Comercialización</a>
+                <a class="nav-link" href="<?= base_url('aboutUs') ?>">Sobre Nosotros</a>
+                <a class="nav-link" href="<?= base_url('terminos') ?>">Términos</a>
+                <a class="btn btn-primary btn-sm ms-2" href="<?= base_url('cerrarSesion') ?>">Cerrar sesión</a>
             </div>
+
         </div>
 
     </div>
