@@ -17,6 +17,7 @@
         <!-- Menú para ESCRITORIO (pantallas grandes) -->
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="<?= base_url('iniciarsesion') ?>">Iniciar Sesion</a>
                 <a class="nav-link" href="<?= base_url('catalogo') ?>">Catálogo</a>
                 <a class="nav-link" href="<?= base_url('contacto') ?>">Contacto</a>
                 <a class="nav-link" href="<?= base_url('comercializacion') ?>">Comercialización</a>
