@@ -16,8 +16,11 @@ $routes->get('catalogo', 'ProductosController::index');
 $routes->get('agregarproducto', 'ProductosController::agregar');
 $routes->post('nuevoproducto', 'ProductosController::nuevoproducto');
 $routes->post('eliminarProducto', 'ProductosController::eliminarProducto');
+$routes->get('producto/(:num)', 'ProductosController::ver/$1');
+
 
 $routes->get('editarproducto/(:num)', 'ProductosController::editarproducto/$1');
+$routes->post('editarproducto/(:num)', 'ProductosController::actualizarProducto/$1');
 
 
 /*registrarse */

@@ -6,7 +6,7 @@
             <h3 class="my-5 mt-5">Editar Producto</h3>
 
             <form action="<?= base_url('editarproducto/' .$producto['id_producto']);?>" class="row g-3" method="post" autocomplete="off" enctype="multipart/form-data">
-            
+                <?= csrf_field() ?>
                 <input type="hidden" name="_method" value="put">
                 <input type="hidden" name="producto_id" value="<?= $producto['id_producto']; ?>">
 

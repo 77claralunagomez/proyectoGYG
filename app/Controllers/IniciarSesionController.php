@@ -40,7 +40,8 @@ class IniciarSesionController extends BaseController
         $data = [
             'logged_in' => true,
             'email' => $userData['email'],
-            'nombre' => $userData['nombre']
+            'nombre' => $userData['nombre'],
+            'rol' => $userData['rol']
         ];
         $this->session->set($data);
     }
