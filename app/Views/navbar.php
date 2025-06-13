@@ -23,6 +23,7 @@
                 <a class="nav-link" href="<?= base_url('comercializacion') ?>">Comercialización</a>
                 <a class="nav-link" href="<?= base_url('aboutUs') ?>">Sobre Nosotros</a>
                 <a class="nav-link" href="<?= base_url('terminos') ?>">Términos</a>
+                <a class="nav-link" href="<?= base_url('carrito') ?>">Carrito</a>
                 <a class="btn btn-primary btn-sm ms-2" href="<?= base_url('cerrarSesion') ?>">Cerrar sesión</a>
             </div>
 

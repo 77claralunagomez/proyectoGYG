@@ -38,10 +38,11 @@ class IniciarSesionController extends BaseController
     private function setSession($userData)
     {
         $data = [
-            'logged_in' => true,
-            'email' => $userData['email'],
-            'nombre' => $userData['nombre'],
-            'rol' => $userData['rol']
+            'logged_in'   => true,
+            'id_usuario'  => $userData['id_usuario'], // 👈 esto es lo que faltaba
+            'email'       => $userData['email'],
+            'nombre'      => $userData['nombre'],
+            'rol'         => $userData['rol']
         ];
         $this->session->set($data);
     }

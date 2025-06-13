@@ -29,3 +29,4 @@ class ProductosModel extends Model
     protected $useTimestamps = false; // Si no usas timestamps, déjalo en false
 
 }
+?>

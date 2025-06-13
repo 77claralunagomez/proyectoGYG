@@ -5,19 +5,17 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 /***Model es una extension de BaseModel para poder utilizar distintas funciones */
-class PersonasModel extends Model
+class CarritoModel extends Model
 {
 
-    protected $table = 'personas';
+    protected $table = 'carrito';
     /**nombre de la tabla */
-    protected $primaryKey = 'id_persona';
+    protected $primaryKey = 'id_carrito';
 
     protected $allowedFields = [
-        'dni',
-        'nombre',
-        'apellido',
-        'id_domicilio',
-        'telefono'
+        'id_usuario',
+        'id_producto',
+        'cantidad'
     ];
 
     protected $useTimestamps = false; // Si no usas timestamps, déjalo en false
@@ -25,3 +23,4 @@ class PersonasModel extends Model
     protected $returnType = 'array'; // O 'object' si prefieres objetos
 
 }
+?>

@@ -21,15 +21,13 @@ class ProductosController extends BaseController
     public function agregar()
     {
 
-        /*if (!session()->get('logged_in') || session()->get('rol') != 1) {
+        if (!session()->get('logged_in') || session()->get('rol') != 1) {
             return redirect()->to('/');
-        }*/
-
-        $this->validarSiAdministrador();
-
+        
         return view('head')
             . view('navbar')
             . view('agregarproducto');
+        }
     }
 
     public function nuevoproducto()
@@ -166,13 +164,5 @@ class ProductosController extends BaseController
         }
 
         return view('verproducto', ['producto' => $producto]);
-    }
-
-
-    public function validarSiAdministrador()
-    {
-        if (!session()->get('logged_in') || session()->get('rol') != 1) {
-            return redirect()->to('/');
-        }
     }
 }

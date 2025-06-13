@@ -18,6 +18,9 @@ $routes->post('nuevoproducto', 'ProductosController::nuevoproducto');
 $routes->post('eliminarProducto', 'ProductosController::eliminarProducto');
 $routes->get('producto/(:num)', 'ProductosController::ver/$1');
 
+/*Pedido */
+$routes->get('carrito', 'PedidoController::verCarrito');
+$routes->post('carrito/agregar/(:num)', 'PedidoController::agregarAlCarrito/$1');
 
 $routes->get('editarproducto/(:num)', 'ProductosController::editarproducto/$1');
 $routes->post('editarproducto/(:num)', 'ProductosController::actualizarProducto/$1');

@@ -23,7 +23,9 @@
                                 <?= csrf_field() ?>
                                 <div class="input-group mb-3" style="max-width: 150px;">
                                     <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control">
-                                    <button type="submit" class="btn btn-success">Agregar al carrito</button>
+                                    <button type="submit" name="accion" value="agregar" class="btn btn-success">Agregar al carrito</button>
+                                    <button type="submit" name="accion" value="comprar" class="btn btn-danger">Comprar Ahora</button>
+
                                 </div>
                             </form>
 

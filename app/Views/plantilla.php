@@ -19,6 +19,6 @@
 
         <script src="<?= base_url('assets/js/bootstrap.bundle.js')?>" rel="stylesheet" integrity=" " crossorigin=""></script>
         <script src="<?= base_url('assets/js/toast-eliminar.js')?>" rel="stylesheet" integrity=" " crossorigin=""></script>
-    <?= view('footer'); ?>
+    
     </body>    
 </html>

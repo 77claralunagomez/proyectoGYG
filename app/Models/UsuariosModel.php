@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class UsuariosModel extends Model{
 
  protected $table = 'usuarios';  /**nombre de la tabla */
- protected $primaryKey = 'id_usuarios';
+ protected $primaryKey = 'id_usuario';
 
  protected $allowedFields = [
     'nombre',
@@ -22,14 +22,18 @@ class UsuariosModel extends Model{
 
  protected $returnType = 'array'; // O 'object' si prefieres objetos
 
- public function validarUsuario($email, $pass){
-    $email = $this->where(['email' => $email, 'activo' => 1])->first();
-    if($email && password_verify($pass, $email['pass'])){
-        return $email;
-    }
+ public function validarUsuario($email, $pass)
+    {
+        $usuario = $this->select('id_usuario, email, pass, nombre, rol')
+                        ->where(['email' => $email, 'activo' => 1])
+                        ->first();
 
-    return null;
-    
-    }   
+        if ($usuario && password_verify($pass, $usuario['pass'])) {
+            return $usuario;
+        }
+
+        return null;
+    }
+ 
 }
 ?>

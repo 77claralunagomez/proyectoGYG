@@ -3,6 +3,7 @@
 <?= $this->section('content'); ?>
 
 <div class="container mt-5 my-5 mt-carousel">
+    <div class="mt-5 mt-carousel">.</div>
     <h1 class="mb-4">Lista de Productos</h1>
     <?php if (session()->get('rol') == 1): ?>
         <a href="<?= base_url('agregarproducto') ?>" class="btn btn-success">Agregar</a>

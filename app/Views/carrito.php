@@ -1,0 +1,55 @@
+<?= $this->extend('plantilla'); ?>
+<?= $this->section('content'); ?>
+
+<div class="container mt-5 ">
+    <div class="mt-5 mt-carousel">.</div>
+    <h2 class="mb-4">🛒 Carrito de Compras</h2>
+
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+    <?php elseif (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+    <?php endif; ?>
+
+    <?php if (!empty($carrito)): ?>
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio Unitario</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $total = 0; ?>
+                <?php foreach ($carrito as $item): ?>
+                    <?php $subtotal = $item['precio'] * $item['cantidad']; ?>
+                    <tr>
+                        <td><?= esc($item['nombre']) ?></td>
+                        <td>$<?= number_format($item['precio'], 2) ?></td>
+                        <td><?= esc($item['cantidad']) ?></td>
+                        <td>$<?= number_format($subtotal, 2) ?></td>
+                    </tr>
+                    <?php $total += $subtotal; ?>
+                <?php endforeach; ?>
+                <tr class="table-secondary fw-bold">
+                    <td colspan="3" class="text-end">Total</td>
+                    <td>$<?= number_format($total, 2) ?></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a href="<?= base_url('catalogo') ?>" class="btn btn-outline-primary">🛍️ Seguir Comprando</a>
+            <a href="<?= base_url('pedido/procesar') ?>" class="btn btn-success">💳 Finalizar Compra</a>
+        </div>
+
+    <?php else: ?>
+        <div class="alert alert-info">
+            Tu carrito está vacío. <a href="<?= base_url('catalogo') ?>">¡Agregá productos!</a>
+        </div>
+    <?php endif; ?>
+</div>
+
+<?= $this->endSection(); ?>
