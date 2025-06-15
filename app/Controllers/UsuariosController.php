@@ -19,6 +19,7 @@ class UsuariosController extends BaseController
 
            'nombre' => 'required|max_length[50]' ,
            'apellido' => 'required|max_length[50]' ,
+           'domicilio' => 'required|max_length[255]' ,
            'email' => 'required|max_length[100]|valid_email|is_unique[usuarios.email]' ,
             'pass' => 'required|max_length[100]|min_length[5]',
             'repassword' => 'matches[pass]'
@@ -29,17 +30,18 @@ class UsuariosController extends BaseController
         }
 
         $usuariosModel =  new UsuariosModel();
-        $post = $this->request->getPost(['nombre','apellido','email','pass',]);
+        $post = $this->request->getPost(['nombre','apellido', 'domicilio', 'email','pass',]);
 
         $usuariosModel->insert([
             'nombre' => $post['nombre'], 
             'apellido' => $post['apellido'], 
+            'domicilio' => $post['domicilio'], 
             'email' => $post['email'], 
             'pass' => password_hash($post['pass'], PASSWORD_DEFAULT),
             'rol' => 2,
             'activo' => 1
         ]);
-
+        return redirect()->to(base_url('iniciarsesion'));
     }
 
 }

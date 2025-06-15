@@ -12,6 +12,7 @@ class UsuariosModel extends Model{
  protected $allowedFields = [
     'nombre',
     'apellido',
+    'domicilio',
     'email',
     'pass',
     'rol',

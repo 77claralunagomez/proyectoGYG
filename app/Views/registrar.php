@@ -16,6 +16,12 @@
                 <label class="mb-2" for="apellido">Apellido</label>
                 <input class="form-control" name="apellido" id="apellido" value="<?= set_value('apellido'); ?>" required>
             </div>
+
+            <div class="mb-3">
+                <label class="mb-2" for="domicilio">Domicilio</label>
+                <input class="form-control" name="domicilio" id="domicilio" value="<?= set_value('domicilio'); ?>" required>
+            </div>
+
             <div class="mb-3">
                 <label class="mb-2" for="email">Correo electrónico</label>
                 <input type="email" class="form-control" name="email" id="email" value="<?= set_value('email'); ?>" required>

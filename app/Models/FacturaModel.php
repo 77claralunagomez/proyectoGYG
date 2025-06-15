@@ -8,14 +8,14 @@ use CodeIgniter\Model;
 class DetalleFacturaModel extends Model
 {
 
-    protected $table = 'detallefactura';
+    protected $table = 'factura';
     /**nombre de la tabla */
-    protected $primaryKey = 'id_detalle_factura';
+    protected $primaryKey = 'id_factura';
 
     protected $allowedFields = [
-        'id_producto',
-        'id_factura',
-        'cantidad',
+        'id_usuario',
+        'fecha_factura',
+        'total',
         'subtotal'
     ];
 
