@@ -11,19 +11,19 @@ $routes->get('contacto', 'Home::contacto');
 $routes->get('comercializacion', 'Home::comercializacion');
 $routes->get('aboutUs', 'Home::aboutUs');
 $routes->get('terminos', 'Home::terminos');
+
 /*Catalogo */
 $routes->get('catalogo', 'ProductosController::index');
 $routes->get('agregarproducto', 'ProductosController::agregar');
 $routes->post('nuevoproducto', 'ProductosController::nuevoproducto');
 $routes->post('eliminarProducto', 'ProductosController::eliminarProducto');
 $routes->get('producto/(:num)', 'ProductosController::ver/$1');
-
-/*Pedido */
-$routes->get('carrito', 'PedidoController::verCarrito');
-$routes->post('carrito/agregar/(:num)', 'PedidoController::agregarAlCarrito/$1');
-
 $routes->get('editarproducto/(:num)', 'ProductosController::editarproducto/$1');
 $routes->post('editarproducto/(:num)', 'ProductosController::actualizarProducto/$1');
+
+/*Carrito */
+$routes->get('carrito', 'CarritoController::verCarrito');
+$routes->post('agregarAlCarrito/(:num)', 'CarritoController::agregarAlCarrito/$1');
 
 
 /*registrarse */

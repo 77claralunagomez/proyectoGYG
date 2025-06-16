@@ -11,7 +11,7 @@
         <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
     <?php endif; ?>
 
-    <?php if (!empty($carrito)): ?>
+    <?php if (!empty($items)): ?>
         <table class="table table-bordered table-striped align-middle">
             <thead class="table-dark">
                 <tr>
@@ -23,12 +23,12 @@
             </thead>
             <tbody>
                 <?php $total = 0; ?>
-                <?php foreach ($carrito as $item): ?>
-                    <?php $subtotal = $item['precio'] * $item['cantidad']; ?>
+                <?php foreach ($items as $item): ?>
+                    <?php $subtotal = $item['price'] * $item['qty']; ?>
                     <tr>
-                        <td><?= esc($item['nombre']) ?></td>
-                        <td>$<?= number_format($item['precio'], 2) ?></td>
-                        <td><?= esc($item['cantidad']) ?></td>
+                        <td><?= esc($item['name']) ?></td>
+                        <td>$<?= number_format($item['price'], 2) ?></td>
+                        <td><?= esc($item['qty']) ?></td>
                         <td>$<?= number_format($subtotal, 2) ?></td>
                     </tr>
                     <?php $total += $subtotal; ?>

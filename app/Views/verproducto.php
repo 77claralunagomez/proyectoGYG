@@ -19,7 +19,7 @@
 
                             <p class="card-text"><small class="text-muted">Stock: <?= esc($producto['cantidad']) ?> disponibles</small></p>
 
-                            <form action="<?= base_url('carrito/agregar/' . $producto['id_producto']) ?>" method="post" class="mt-3">
+                            <form action="<?= base_url('agregarAlCarrito/' . $producto['id_producto']) ?>" method="post" class="mt-3">
                                 <?= csrf_field() ?>
                                 <div class="input-group mb-3" style="max-width: 150px;">
                                     <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control">
