@@ -32,13 +32,14 @@ class CarritoController extends BaseController
    }*/
 
    public function agregarAlCarrito($productoId)
-   {
+   { 
+      $cart = \Config\Services::cart();
       $productoModel = new ProductosModel();
       $producto = $productoModel->find($productoId);
 
       if (!$producto) {
          return redirect()->back()->with('error', 'Producto no encontrado.');
-      }
+      }//veremos
 
       $cantidad = (int)$this->request->getPost('cantidad');
 
@@ -50,9 +51,12 @@ class CarritoController extends BaseController
          return redirect()->back()->with('errors', 'No hay suficiente stock');
       }
 
+      if ($cart->totalItems() >= $producto['cantidad']) {
+         return redirect()->back()->with('errors', 'No se pued agregar mas productos, supero el stock ');
+      }
+
       if (!session()->get('logged_in')) {
          // Usuario no logueado → usar sesión
-         $cart = \Config\Services::cart();
          $cart->insert([
             'id'      => $producto['id_producto'],
             'qty'     => $cantidad,

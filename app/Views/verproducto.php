@@ -5,6 +5,12 @@
     <div class="my-5">.</div>
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <?php if (session()->has('errors')): ?>
+                <div class="alert alert-danger">
+                    <?= session('errors') ?>
+                </div>
+            <?php endif; ?>
+
 
             <div class="card shadow-sm border-0">
                 <div class="row g-0">
