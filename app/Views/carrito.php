@@ -30,6 +30,12 @@
                         <td>$<?= number_format($item['price'], 2) ?></td>
                         <td><?= esc($item['qty']) ?></td>
                         <td>$<?= number_format($subtotal, 2) ?></td>
+                        <td>
+                            <form action="<?= base_url('eliminarDelCarrito/' . $item['id']) ?>" method="post">
+                                <?= csrf_field() ?>
+                                <button type="submit" class="btn btn-danger btn-sm">🗑 Eliminar</button>
+                            </form>
+                        </td>
                     </tr>
                     <?php $total += $subtotal; ?>
                 <?php endforeach; ?>

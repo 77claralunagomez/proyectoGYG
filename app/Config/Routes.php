@@ -24,6 +24,7 @@ $routes->post('editarproducto/(:num)', 'ProductosController::actualizarProducto/
 /*Carrito */
 $routes->get('carrito', 'CarritoController::verCarrito');
 $routes->post('agregarAlCarrito/(:num)', 'CarritoController::agregarAlCarrito/$1');
+$routes->post('eliminarDelCarrito/(:num)', 'CarritoController::eliminarDelCarrito/$1');
 
 
 /*registrarse */

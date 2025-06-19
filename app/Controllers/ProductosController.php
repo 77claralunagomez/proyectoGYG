@@ -22,12 +22,11 @@ class ProductosController extends BaseController
     {
 
         if (!session()->get('logged_in') || session()->get('rol') != 1) {
-            return redirect()->to('/');
-        
+            return redirect()->to('/');   
+        }
         return view('head')
             . view('navbar')
             . view('agregarproducto');
-        }
     }
 
     public function nuevoproducto()

@@ -11,9 +11,9 @@ class CarritoController extends BaseController
 
    public function __construct()
    {
-    helper(['form', 'url', 'cart']);
-    $cart = \Config\Services::cart();
-    $session = session();
+      helper(['form', 'url', 'cart']);
+      $cart = \Config\Services::cart();
+      $session = session();
    }
 
    /*public function agregarAlCarrito(){
@@ -32,37 +32,53 @@ class CarritoController extends BaseController
    }*/
 
    public function agregarAlCarrito($productoId)
-   { 
+   {
       $cart = \Config\Services::cart();
       $productoModel = new ProductosModel();
       $producto = $productoModel->find($productoId);
 
-      if (!$producto) {
-         return redirect()->back()->with('error', 'Producto no encontrado.');
-      }//veremos
-
       $cantidad = (int)$this->request->getPost('cantidad');
 
-      if ($cantidad<1) {
+      if ($cantidad < 1) {
          return redirect()->back()->with('errors', 'Cantidad invalida');
       }
-      
+
       if ($cantidad > $producto['cantidad']) {
          return redirect()->back()->with('errors', 'No hay suficiente stock');
       }
 
-      if ($cart->totalItems() >= $producto['cantidad']) {
-         return redirect()->back()->with('errors', 'No se pued agregar mas productos, supero el stock ');
-      }
-
       if (!session()->get('logged_in')) {
-         // Usuario no logueado → usar sesión
-         $cart->insert([
-            'id'      => $producto['id_producto'],
-            'qty'     => $cantidad,
-            'price'   => $producto['precio'],
-            'name'    => $producto['nombre'],
-         ]);
+         $existe = false;
+
+         foreach ($cart->contents() as $item) {
+            if ($item['id'] == $productoId) {
+               $nuevaCantidad = $item['qty'] + $cantidad;
+
+               if ($nuevaCantidad > $producto['cantidad']) {
+                  return redirect()->back()->with('errors', 'No se puede agregar más productos, superó el stock disponible');
+               }
+
+               $cart->update([
+                  'rowid' => $item['rowid'],
+                  'qty'   => $nuevaCantidad
+               ]);
+               $existe = true;
+               break;
+            }
+         }
+
+         if (!$existe) {
+            if ($cantidad > $producto['cantidad']) {
+               return redirect()->back()->with('errors', 'No hay suficiente stock para agregar ese producto');
+            }
+
+            $cart->insert([
+               'id'    => $producto['id_producto'],
+               'qty'   => $cantidad,
+               'price' => $producto['precio'],
+               'name'  => $producto['nombre'],
+            ]);
+         }
       } else {
          // Usuario logueado → usar base de datos
          $carritoModel = new CarritoModel();
@@ -71,23 +87,25 @@ class CarritoController extends BaseController
          // Verificar si ya está el producto en el carrito del usuario
          $existente = $carritoModel
             ->where('id_usuario', $usuarioId)
-            ->where('producto_id', $productoId)
+            ->where('id_producto', $productoId)
             ->first();
 
          if ($existente) {
+
+            $existente['cantidad'] += $cantidad;
             // Actualizar cantidad
-            $existente['cantidad'] += 1;
-            $existente['subtotal'] = $existente['cantidad'] * $existente['precio_unitario'];
+            if ($existente['cantidad'] > $producto['cantidad']) {
+               return redirect()->back()->with('errors', 'No se pued agregar mas productos, supero el stock ');
+            }
+
+            // Ya que no hay campo 'precio_unitario' ni 'subtotal', no los usamos
             $carritoModel->save($existente);
          } else {
-            // Insertar nuevo
+            // Insertar nuevo solo con los campos válidos
             $carritoModel->insert([
-               'id_usuario'      => $usuarioId,
-               'producto_id'     => $producto['id'],
-               'nombre'          => $producto['nombre'],
-               'cantidad'        => $cantidad,
-               'precio_unitario' => $producto['precio'],
-               'subtotal'        => $producto['precio'],
+               'id_usuario'  => $usuarioId,
+               'id_producto' => $producto['id_producto'],
+               'cantidad'    => $cantidad
             ]);
          }
       }
@@ -113,18 +131,55 @@ class CarritoController extends BaseController
       return redirect()->back()->withInput();
    }
 
-   public function verCarrito() {
-      if (session()->get('logged_in')) {
-        // Usuario logueado → obtener carrito desde la base de datos
-        $carritoModel = new \App\Models\CarritoModel();
-        $usuarioId = session()->get('id_usuario');
-        $items = $carritoModel->where('id_usuario', $usuarioId)->findAll();
-    } else {
-        // Usuario no logueado → obtener carrito desde la sesión
-        $cart = \Config\Services::cart();
-        $items = $cart->contents();
-    }
+   public function verCarrito()
+   {
+      $items = [];
 
-    return view('carrito', ['items' => $items]);
+      if (!session()->get('logged_in')) {
+         // Usuario NO logueado → obtener del carrito en sesión
+         $cart = \Config\Services::cart();
+         $items = $cart->contents();
+      } else {
+         // Usuario logueado → obtener desde DB
+         $carritoModel = new CarritoModel();
+         $productoModel = new ProductosModel();
+         $usuarioId = session()->get('id_usuario');
+
+         // Traer los items del carrito (solo contiene id_producto y cantidad)
+         $carrito = $carritoModel->where('id_usuario', $usuarioId)->findAll();
+
+         foreach ($carrito as $item) {
+            // Obtener el producto asociado
+            $producto = $productoModel->find($item['id_producto']);
+
+            if ($producto) {
+               $items[] = [
+                  'id'    => $producto['id_producto'],
+                  'name'  => $producto['nombre'],
+                  'price' => $producto['precio'],
+                  'qty'   => $item['cantidad'],
+               ];
+            }
+         }
+      }
+
+      return view('carrito', ['items' => $items]);
+   }
+
+   public function eliminarDelCarrito($productoId)
+   {
+      if (!session()->get('logged_in')) {
+         $cart = \Config\Services::cart();
+
+         // Recorremos los items del carrito
+         foreach ($cart->contents() as $item) {
+            if ($item['id'] == $productoId) {
+               $cart->remove($item['rowid']); // eliminamos el correcto
+               break;
+            }
+         }
+
+         return redirect()->to('/carrito')->with('success', 'Producto eliminado del carrito');
+      }
    }
 }
