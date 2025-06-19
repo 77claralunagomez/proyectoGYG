@@ -15,6 +15,9 @@ $routes->get('terminos', 'Home::terminos');
 /*Catalogo */
 $routes->get('catalogo', 'ProductosController::index');
 $routes->get('agregarproducto', 'ProductosController::agregar');
+$routes->get('productos-desactivados', 'ProductosController::verDesactivados');
+$routes->post('activarProducto', 'ProductosController::activarProducto');
+$routes->post('desactivarProducto', 'ProductosController::desactivarProducto');
 $routes->post('nuevoproducto', 'ProductosController::nuevoproducto');
 $routes->post('eliminarProducto', 'ProductosController::eliminarProducto');
 $routes->get('producto/(:num)', 'ProductosController::ver/$1');
@@ -26,6 +29,11 @@ $routes->get('carrito', 'CarritoController::verCarrito');
 $routes->post('agregarAlCarrito/(:num)', 'CarritoController::agregarAlCarrito/$1');
 $routes->post('eliminarDelCarrito/(:num)', 'CarritoController::eliminarDelCarrito/$1');
 
+/* factura */
+// ... otras rutas
+$routes->get('factura/ver/(:num)', 'FacturaController::ver/$1');
+$routes->get('finalizarCompra', 'FacturaController::finalizarCompra');
+// ...
 
 /*registrarse */
 $routes->get('registrar', 'UsuariosController::index');

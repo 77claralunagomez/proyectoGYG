@@ -164,4 +164,43 @@ class ProductosController extends BaseController
 
         return view('verproducto', ['producto' => $producto]);
     }
+
+    public function verDesactivados()
+    {
+        if (!session()->get('logged_in') || session()->get('rol') != 1) {
+            return redirect()->to('/');
+        }
+       
+        $productoModel = new ProductosModel();
+
+        $resultado = $productoModel->where('activo', 0)->findAll(); // devuelve cada uno de los productos de array
+        // Puedes pasar los datos a la vista
+        return view('productos-desactivados', ['productos' => $resultado]); 
+    }
+
+    public function desactivarProducto() {
+       if (!session()->get('logged_in') || session()->get('rol') != 1) {
+            return redirect()->to('/');
+        }
+
+        $id = $this->request->getPost('id');
+
+        $productoModel = new ProductosModel();
+        $productoModel->update($id, ['activo' => 0]);
+        return redirect()->to('catalogo')->with('mensaje', 'Producto eliminado correctamente');
+ 
+    }
+
+    public function activarProducto() {
+       if (!session()->get('logged_in') || session()->get('rol') != 1) {
+            return redirect()->to('/');
+        }
+
+        $id = $this->request->getPost('id');
+
+        $productoModel = new ProductosModel();
+        $productoModel->update($id, ['activo' => 1]);
+        return redirect()->to('productos-desactivados')->with('mensaje', 'Producto activado');
+ 
+    }
 }

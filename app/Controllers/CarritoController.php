@@ -180,6 +180,18 @@ class CarritoController extends BaseController
          }
 
          return redirect()->to('/carrito')->with('success', 'Producto eliminado del carrito');
+      }else {
+         $carritoModel = new CarritoModel();
+         $usuarioId = session()->get('id_usuario');
+
+         $carritoModel
+            ->where('id_usuario', $usuarioId)
+            ->where('id_producto', $productoId)
+            ->delete();
+
+         return redirect()->to('/carrito')->with('success', 'Producto eliminado del carrito');
+
       }
+
    }
 }

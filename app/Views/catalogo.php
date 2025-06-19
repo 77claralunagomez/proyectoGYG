@@ -7,6 +7,7 @@
     <h1 class="mb-4">Lista de Productos</h1>
     <?php if (session()->get('rol') == 1): ?>
         <a href="<?= base_url('agregarproducto') ?>" class="btn btn-success">Agregar</a>
+        <a href="<?= base_url('productos-desactivados') ?>" class="btn btn-warning">Productos desactivados</a>
     <?php endif; ?>
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
@@ -65,7 +66,7 @@
     <!-- Modal Eliminar -->
     <div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="eliminaModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form method="post" action="<?= base_url('eliminarProducto') ?>">
+            <form method="post" action="<?= base_url('desactivarProducto') ?>">
                 <?= csrf_field() ?>
                 <input type="hidden" name="id" id="id_eliminar">
                 <div class="modal-content">

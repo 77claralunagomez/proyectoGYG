@@ -5,7 +5,7 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 /***Model es una extension de BaseModel para poder utilizar distintas funciones */
-class DetalleFacturaModel extends Model
+class FacturaModel extends Model
 {
 
     protected $table = 'factura';
