@@ -23,12 +23,12 @@
                             <p class="card-text"><?= esc($producto['descripcion']) ?></p>
                             <h4 class="text-primary">$<?= number_format($producto['precio'], 2) ?></h4>
 
-                            <p class="card-text"><small class="text-muted">Stock: <?= esc($producto['cantidad']) ?> disponibles</small></p>
+                            <p class="card-text"><small class="text-muted">Stock: <?= esc($producto['stock']) ?> disponibles</small></p>
 
                             <form action="<?= base_url('agregarAlCarrito/' . $producto['id_producto']) ?>" method="post" class="mt-3">
                                 <?= csrf_field() ?>
                                 <div class="input-group mb-3" style="max-width: 150px;">
-                                    <input type="number" name="cantidad" value="1" min="1" max="<?= $producto['cantidad'] ?>" class="form-control">
+                                    <input type="number" name="stock" value="1" min="1" max="<?= $producto['stock'] ?>" class="form-control">
                                     <button type="submit" name="accion" value="agregar" class="btn btn-success">Agregar al carrito</button>
                                     <button type="submit" name="accion" value="comprar" class="btn btn-danger">Comprar Ahora</button>
 

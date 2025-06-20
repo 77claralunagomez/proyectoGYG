@@ -1,7 +1,8 @@
-
+<?= $this->extend('plantilla'); ?>
+<?= $this->section('content'); ?>
     <!-- Carrousel-->
      
-    <section class="container-fluid mt-carousel col-12">
+    <section class="container-fluid col-12">
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
 
             <div class="carousel-inner">
@@ -114,7 +115,6 @@
                 </div>
             </div>
         </div>
-
-        <br>
     </section>
+    <?= $this->endSection(); ?>
     

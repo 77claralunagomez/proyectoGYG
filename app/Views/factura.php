@@ -4,7 +4,7 @@
 <?= $this->section('content') ?>
 <div class="container mt-5 my-5 mt-carousel">
     
-<div class="mt-5 mt-carousel mt-5">.</div>
+<div class="mt-5 mt-carousel">.</div>
     <h2 class="mb-4">Factura Nº <?= esc($factura['id_factura']) ?></h2>
 
     <div class="row mb-3">

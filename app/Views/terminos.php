@@ -1,3 +1,5 @@
+<?= $this->extend('plantilla'); ?>
+<?= $this->section('content'); ?>
 <section class="bg-light py-5 my-5 font-monospace text-justify">
     <div class="container">
         <h2 class="text-center mb-4"> Términos y Condiciones de Uso</h2>
@@ -36,10 +38,7 @@
         <p>
             Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento. Los cambios entrarán en vigencia inmediatamente luego de su publicación.
         </p>
-
-        <h5 class="mt-4">7. Contacto</h5>
-        <p>
-            Si tenés alguna duda sobre estos términos, podés escribirnos a: <a href="mailto:Claralunagomez968@gmail.com">Claralunagomez968@gmail.com</a>
-        </p>
     </div>
 </section>
+
+<?= $this->endSection(); ?>

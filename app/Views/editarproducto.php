@@ -27,8 +27,8 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="cantidad" class="form-label">cantidad</label>
-                    <input type="number" class="form-control" id="cantidad" name="cantidad" value="<?= $producto['cantidad']; ?>" required>
+                    <label for="stock" class="form-label">Stock</label>
+                    <input type="number" class="form-control" id="stock" name="stock" value="<?= $producto['stock']; ?>" required>
                 </div>
 
 

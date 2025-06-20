@@ -1,3 +1,5 @@
+<?= $this->extend('plantilla'); ?>
+<?= $this->section('content'); ?>
 <section class="text-dark bg-light py-5 my-5">
     <div class="container" data-aos="fade-up">
 
@@ -43,3 +45,4 @@
         </div>
     </div>
 </section>
+<?= $this->endSection(); ?>

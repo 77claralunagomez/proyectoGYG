@@ -1,19 +1,22 @@
 *
+
 /*agrega mas margen inferior*/
 .margen-bottom7 {
     margin-bottom: 50px;
 }
+
 /*agrega mas margen superior 50px*/
 .margen-top7 {
     margin-top: 50px;
 }
+
 /*agrega margenes a los 4 lados*/
 .margen7 {
     margin: 50px;
 }
 
 /*agrega mas margen superior para el carousel*/
-.mt-carousel{
+.mt-carousel {
     margin-top: 80px;
 }
 
@@ -38,14 +41,30 @@ input[type="search"] {
     background-image: url('assets/img/svg/icon_search.svg');
     background-repeat: no-repeat;
     background-position: left center;
-    background-size: 30px 30px; /* Ajusta el tamaño del ícono */
-    padding-left: 40px; /* Da espacio para el ícono */
+    background-size: 30px 30px;
+    /* Ajusta el tamaño del ícono */
+    padding-left: 40px;
+    /* Da espacio para el ícono */
 }
 
 .toast-top-custom {
     top: 15%;
     z-index: 1055;
 }
-  
-.boton-flota{position: fixed; right: 6px; top: 90%; z-index: 50; color: black;} /*z-index determina qué elementos se muestran por encima de otros*
+
+.padding-7 {
+
+    padding-top: 70px;
+}
+
+
+.boton-flota {
+    position: fixed;
+    right: 6px;
+    top: 90%;
+    z-index: 50;
+    color: black;
+}
+
+/*z-index determina qué elementos se muestran por encima de otros*
   

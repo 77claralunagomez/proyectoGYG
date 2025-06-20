@@ -1,3 +1,5 @@
+<?= $this->extend('plantilla'); ?>
+<?= $this->section('content'); ?>
 <section class="bg-light text-center py-5 my-5">
     <br>
     <div>
@@ -66,3 +68,4 @@
     </div>
     <br>
 </section>
+<?= $this->endSection(); ?>

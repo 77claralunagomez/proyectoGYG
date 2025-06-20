@@ -9,12 +9,14 @@
 
     
     </head>
-    <body>
+    <body class="padding-7 ">
         <?= view('navbar'); ?>
 
         <div class="container mt-5">
             <?= $this ->renderSection('content'); ?>
         </div>
+        
+        <?= view('footer'); ?>
 
 
         <script src="<?= base_url('assets/js/bootstrap.bundle.js')?>" rel="stylesheet" integrity=" " crossorigin=""></script>

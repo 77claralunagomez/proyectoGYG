@@ -24,9 +24,7 @@ class ProductosController extends BaseController
         if (!session()->get('logged_in') || session()->get('rol') != 1) {
             return redirect()->to('/');   
         }
-        return view('head')
-            . view('navbar')
-            . view('agregarproducto');
+        return view('agregarproducto');
     }
 
     public function nuevoproducto()
@@ -40,7 +38,7 @@ class ProductosController extends BaseController
             'nombre' => 'required',
             'descripcion' => 'required',
             'precio' => 'required',
-            'cantidad' => 'required',
+            'stock' => 'required',
             'categoria' => 'required'
         ];
 
@@ -60,13 +58,13 @@ class ProductosController extends BaseController
         // Guardá el producto
         $productoModel = new ProductosModel();
 
-        $post = $this->request->getPost(['nombre', 'descripcion', 'precio', 'cantidad', 'categoria']);
+        $post = $this->request->getPost(['nombre', 'descripcion', 'precio', 'stock', 'categoria']);
 
         $productoModel->insert([
             'nombre' => trim($post['nombre']),
             'descripcion' => trim($post['descripcion']),
             'precio' => $post['precio'],
-            'cantidad' => $post['cantidad'],
+            'stock' => $post['stock'],
             'url_imagen' => $rutaImagen,
             'activo' => 1, // si usás un campo activo
             'categoria' => $post['categoria']
@@ -105,9 +103,7 @@ class ProductosController extends BaseController
 
         $resultado['producto'] = $productoModel->find($id);
 
-        return view('head')
-            . view('navbar')
-            . view('editarproducto', $resultado);
+        return view('editarproducto', $resultado);
     }
 
     public function actualizarProducto($id = null)
@@ -119,7 +115,7 @@ class ProductosController extends BaseController
             'nombre' => 'required',
             'descripcion' => 'required',
             'precio' => 'required',
-            'cantidad' => 'required',
+            'stock' => 'required',
             'categoria' => 'required'
         ];
 
@@ -138,13 +134,13 @@ class ProductosController extends BaseController
 
         // Guardá el producto
         $productoModel = new ProductosModel();
-        $post = $this->request->getPost(['nombre', 'descripcion', 'precio', 'cantidad', 'categoria']);
+        $post = $this->request->getPost(['nombre', 'descripcion', 'precio', 'stock', 'categoria']);
 
         $productoModel->update($id, [
             'nombre' => trim($post['nombre']),
             'descripcion' => trim($post['descripcion']),
             'precio' => $post['precio'],
-            'cantidad' => $post['cantidad'],
+            'stock' => $post['stock'],
             'url_imagen' => $rutaImagen,
             'activo' => 1, // si usás un campo activo
             'categoria' => $post['categoria']

@@ -1,0 +1,1 @@
+__ci_last_regenerate|i:1750383299;_ci_previous_url|s:64:"http://localhost/proyecto_GonzalezMauro_GomezClara/iniciarsesion";_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:2:{s:5:"email";s:14:"admin@mail.com";s:4:"pass";s:5:"admin";}}__ci_vars|a:2:{s:13:"_ci_old_input";s:3:"old";s:6:"errors";s:3:"old";}errors|s:42:"El usuario y/o contrasena son incorrectos.";

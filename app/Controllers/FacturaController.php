@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\FacturaModel;
 use App\Models\DetalleFacturaModel; // Asegúrate que el nombre de la clase sea DetalleFacturaModel
 use App\Models\CarritoModel;   // Necesitarás el modelo de carrito
+use App\Models\ProductosModel;
 
 class FacturaController extends BaseController
 {
@@ -53,10 +54,11 @@ class FacturaController extends BaseController
         $carritoModel = new CarritoModel();
         $facturaModel = new FacturaModel();
         $detalleFacturaModel = new DetalleFacturaModel();
+        $productoModel = new ProductosModel();
 
         // 1. Traer los ítems del carrito
         $items = $carritoModel
-            ->select('carrito.*, productos.precio as precio_unitario')
+            ->select('carrito.*, productos.precio as precio_unitario, productos.stock as stock_actual')
             ->join('productos', 'productos.id_producto = carrito.id_producto')
             ->where('carrito.id_usuario', $usuarioId)
             ->findAll();
@@ -65,20 +67,27 @@ class FacturaController extends BaseController
             return redirect()->back()->with('error', 'El carrito está vacío.');
         }
 
-        // 2. Calcular total
+        // 2. Validar stock disponible
+        foreach ($items as $item) {
+            if ($item['cantidad'] > $item['stock_actual']) {
+                return redirect()->back()->with('error', "No hay suficiente stock para el producto ID {$item['id_producto']}. Stock disponible: {$item['stock_actual']}.");
+            }
+        }
+
+        // 3. Calcular total
         $total = 0;
         foreach ($items as $item) {
             $total += $item['cantidad'] * $item['precio_unitario'];
         }
 
-        // 3. Insertar la factura
+        // 4. Insertar la factura
         $idFactura = $facturaModel->insert([
             'id_usuario' => $usuarioId,
             'fecha_factura' => date('Y-m-d H:i:s'),
             'total' => $total,
         ]);
 
-        // 4. Insertar los detalles
+        // 5. Insertar los detalles y actualizar stock
         foreach ($items as $item) {
             $detalleFacturaModel->insert([
                 'id_factura' => $idFactura,
@@ -87,13 +96,25 @@ class FacturaController extends BaseController
                 'subtotal' => $item['cantidad'] * $item['precio_unitario'],
             ]);
 
-            // Opcional: Actualizar stock del producto aquí
+            // Calcular el nuevo stock
+            $nuevoStock = $item['stock_actual'] - $item['cantidad'];
+
+            // Preparar los datos para actualizar el producto
+            $datosActualizacion = ['stock' => $nuevoStock];
+
+            // Si el nuevo stock es 0, desactivar el producto
+            if ($nuevoStock <= 0) {
+                $datosActualizacion['activo'] = 0;
+            }
+
+            // Actualizar el producto
+            $productoModel->update($item['id_producto'], $datosActualizacion);
         }
 
-        // 5. Vaciar el carrito del usuario
+        // 6. Vaciar el carrito del usuario
         $carritoModel->where('id_usuario', $usuarioId)->delete();
 
-        // 6. Redirigir a la vista de la factura
+        // 7. Redirigir a la vista de la factura
         return redirect()->to('factura/ver/' . $idFactura);
     }
 }

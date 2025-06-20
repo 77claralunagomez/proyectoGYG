@@ -6,41 +6,25 @@ class Home extends BaseController
 {
     public function index()
     {
-        echo view('head');
-        echo view('navbar');
-        echo view('index');
-        echo view('comercializacion');
-        echo view('aboutUs');
-        echo view('footer');
+        return view('index');
     }
 
-    public function contacto(){
-        echo view('head');
-        echo view('navbar');
-        echo view('contacto');
-        echo view('footer');
+    public function contacto()
+    {
+        return view('contacto');
     }
-    public function comercializacion(){
-        echo view('head');
-        echo view('navbar');
-        echo view('comercializacion');
-        echo view('footer');
-
+    public function comercializacion()
+    {
+        return view('comercializacion');
     }
 
-    public function aboutUs(){
-        echo view('head');
-        echo view('navbar');
-        echo view('aboutUs');
-        echo view('footer');
-
+    public function aboutUs()
+    { 
+        return view('aboutUs');
     }
 
-    public function terminos(){
-        echo view('head');
-        echo view('navbar');
-        echo view('terminos');
-        echo view('footer');
-
+    public function terminos()
+    {
+        return view('terminos');
     }
 }

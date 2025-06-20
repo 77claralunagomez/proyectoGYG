@@ -37,13 +37,13 @@ class CarritoController extends BaseController
       $productoModel = new ProductosModel();
       $producto = $productoModel->find($productoId);
 
-      $cantidad = (int)$this->request->getPost('cantidad');
+      $stock = (int)$this->request->getPost('stock');
 
-      if ($cantidad < 1) {
+      if ($stock < 1) {
          return redirect()->back()->with('errors', 'Cantidad invalida');
       }
 
-      if ($cantidad > $producto['cantidad']) {
+      if ($stock > $producto['stock']) {
          return redirect()->back()->with('errors', 'No hay suficiente stock');
       }
 
@@ -52,15 +52,15 @@ class CarritoController extends BaseController
 
          foreach ($cart->contents() as $item) {
             if ($item['id'] == $productoId) {
-               $nuevaCantidad = $item['qty'] + $cantidad;
+               $nuevoStock = $item['qty'] + $stock;
 
-               if ($nuevaCantidad > $producto['cantidad']) {
+               if ($nuevoStock > $producto['stock']) {
                   return redirect()->back()->with('errors', 'No se puede agregar más productos, superó el stock disponible');
                }
 
                $cart->update([
                   'rowid' => $item['rowid'],
-                  'qty'   => $nuevaCantidad
+                  'qty'   => $nuevoStock
                ]);
                $existe = true;
                break;
@@ -68,13 +68,13 @@ class CarritoController extends BaseController
          }
 
          if (!$existe) {
-            if ($cantidad > $producto['cantidad']) {
+            if ($stock > $producto['stock']) {
                return redirect()->back()->with('errors', 'No hay suficiente stock para agregar ese producto');
             }
 
             $cart->insert([
                'id'    => $producto['id_producto'],
-               'qty'   => $cantidad,
+               'qty'   => $stock,
                'price' => $producto['precio'],
                'name'  => $producto['nombre'],
             ]);
@@ -92,9 +92,9 @@ class CarritoController extends BaseController
 
          if ($existente) {
 
-            $existente['cantidad'] += $cantidad;
-            // Actualizar cantidad
-            if ($existente['cantidad'] > $producto['cantidad']) {
+            $existente['stock'] += $stock;
+            // Actualizar stock
+            if ($existente['stock'] > $producto['stock']) {
                return redirect()->back()->with('errors', 'No se pued agregar mas productos, supero el stock ');
             }
 
@@ -105,7 +105,7 @@ class CarritoController extends BaseController
             $carritoModel->insert([
                'id_usuario'  => $usuarioId,
                'id_producto' => $producto['id_producto'],
-               'cantidad'    => $cantidad
+               'cantidad'    => $stock
             ]);
          }
       }

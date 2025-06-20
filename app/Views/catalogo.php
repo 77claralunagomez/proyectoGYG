@@ -1,68 +1,55 @@
 <?= $this->extend('plantilla'); ?>
-
 <?= $this->section('content'); ?>
 
-<div class="container mt-5 my-5 mt-carousel">
-    <div class="mt-5 mt-carousel">.</div>
+<div class="container mt-5 my-5">
     <h1 class="mb-4">Lista de Productos</h1>
+
     <?php if (session()->get('rol') == 1): ?>
-        <a href="<?= base_url('agregarproducto') ?>" class="btn btn-success">Agregar</a>
-        <a href="<?= base_url('productos-desactivados') ?>" class="btn btn-warning">Productos desactivados</a>
+        <div class="mb-3">
+            <a href="<?= base_url('agregarproducto') ?>" class="btn btn-success">Agregar</a>
+            <a href="<?= base_url('productos-desactivados') ?>" class="btn btn-warning">Productos desactivados</a>
+        </div>
     <?php endif; ?>
-    <table class="table table-striped table-bordered">
-        <thead class="table-dark">
-            <tr>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>Imagen</th>
-                <td>Ver</td>
-                <?php if (session()->get('rol') == 1): ?>
-                    <th>Acciones</th>
-                <?php endif; ?>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (!empty($productos)) : ?>
-                <?php foreach ($productos as $producto) : ?>
-                    <tr>
-                        <td><?= esc($producto['nombre']) ?></td>
-                        <td>$<?= number_format($producto['precio'], 2) ?></td>
-                        <td><?= esc($producto['cantidad']) ?></td>
-                        <td><img src="<?= base_url($producto['url_imagen']) ?>" class="img-thumbnail" alt="Producto"></td>
-                        <td>
-                            <a href="<?= base_url('producto/' . $producto['id_producto']) ?>" class="btn btn-info btn-sm">
-                                Ver
-                            </a>
-                        </td>
-                        <td>
+
+    <div class="row">
+        <?php if (!empty($productos)) : ?>
+            <?php foreach ($productos as $producto) : ?>
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 position-relative">
+                        <div class="position-relative">
+                            <img src="<?= base_url($producto['url_imagen']) ?>" class="card-img-top" alt="<?= esc($producto['nombre']) ?>" style="height: 200px; object-fit: cover;">
 
                             <?php if (session()->get('rol') == 1): ?>
-                                <a href="<?= base_url('editarproducto/' . $producto['id_producto']) ?>" class="btn btn-warning btn-sm me-2">
-                                    Editar
-                                </a>
-
-                                <!-- Botón Eliminar -->
-                                <button type="button"
-                                    class="btn btn-danger btn-sm"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#eliminaModal"
-                                    data-bs-id="<?= $producto['id_producto'] ?>">
-                                    Eliminar
-                                </button>
+                                <div class="position-absolute top-0 end-0 m-2 d-flex gap-1">
+                                    <a href="<?= base_url('editarproducto/' . $producto['id_producto']) ?>" class="btn btn-warning btn-sm p-1">
+                                        ✎
+                                    </a>
+                                    <button type="button"
+                                        class="btn btn-danger btn-sm p-1"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#eliminaModal"
+                                        data-bs-id="<?= $producto['id_producto'] ?>">
+                                        🗑️
+                                    </button>
+                                </div>
                             <?php endif; ?>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title"><?= esc($producto['nombre']) ?></h5>
+                            <p class="card-text mb-1">Precio: $<?= number_format($producto['precio'], 2) ?></p>
+                            <p class="card-text">Stock: <?= esc($producto['stock']) ?></p>
+                            <a href="<?= base_url('producto/' . $producto['id_producto']) ?>" class="btn btn-info btn-sm mt-auto">Ver</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <div class="col-12 text-center">
+                <p>No hay productos disponibles.</p>
+            </div>
+        <?php endif; ?>
+    </div>
 
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php else : ?>
-                <tr>
-                    <td colspan="3" class="text-center">No hay productos disponibles.</td>
-                </tr>
-            <?php endif; ?>
-
-        </tbody>
-    </table>
     <!-- Modal Eliminar -->
     <div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="eliminaModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -85,4 +72,5 @@
         </div>
     </div>
 </div>
+
 <?= $this->endSection(); ?>

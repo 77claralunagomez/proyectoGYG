@@ -19,7 +19,7 @@ class ProductosModel extends Model
         'nombre',
         'descripcion',
         'precio',
-        'cantidad',
+        'stock',
         'url_imagen',
         'activo',
         'categoria'

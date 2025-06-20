@@ -11,7 +11,7 @@
                     <th>Imagen</th>
                     <th>Nombre</th>
                     <th>Precio</th>
-                    <th>Cantidad</th>
+                    <th>Stock</th>
                     <th>Categoría</th>
                     <th>Acción</th>
                 </tr>
@@ -24,7 +24,7 @@
                         </td>
                         <td><?= esc($producto['nombre']) ?></td>
                         <td>$<?= number_format($producto['precio'], 2) ?></td>
-                        <td><?= esc($producto['cantidad']) ?></td>
+                        <td><?= esc($producto['stock']) ?></td>
                         <td><?= esc($producto['categoria']) ?></td>
                         <td>
                             <form action="<?= base_url('activarProducto') ?>" method="post" class="d-inline">
