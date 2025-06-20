@@ -9,14 +9,18 @@
 
     
     </head>
-    <body class="padding-7 ">
+    
+    <body class="d-flex flex-column min-vh-100 padding-7">
+
         <?= view('navbar'); ?>
 
-        <div class="container mt-5">
-            <?= $this ->renderSection('content'); ?>
-        </div>
+        <main class="flex-grow-1">
+    <?= $this->renderSection('content'); ?>
+</main>
         
-        <?= view('footer'); ?>
+        <footer>
+            <?= view('footer'); ?>
+        </footer>
 
 
         <script src="<?= base_url('assets/js/bootstrap.bundle.js')?>" rel="stylesheet" integrity=" " crossorigin=""></script>

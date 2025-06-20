@@ -15,8 +15,10 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Menú para ESCRITORIO (pantallas grandes) -->
+
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
+
 
                 <a class="nav-link" href="<?= base_url('catalogo') ?>">Catálogo</a>
                 <a class="nav-link" href="<?= base_url('contacto') ?>">Contacto</a>
@@ -27,13 +29,19 @@
                     <img src="<?= base_url('assets/img/svg/icon_cart.svg') ?>" width="38" height="38">
                 </a>
 
-                <!-- Si la sesion ESTA iniciada, se DESABILITAN estas opciones -->
-                <?php if (!session()->get('logged_in')): ?>
+                <?php
+                $loggedIn = session()->get('logged_in');
+                $rol = session()->get('rol');
+                ?>
+
+                <?php if ($loggedIn && $rol == 1): ?>
+                    <a class="nav-link text-danger" href="<?= base_url('admin/dashboard') ?>">Administrar</a>
+                <?php endif; ?>
+
+                <?php if (!$loggedIn): ?>
                     <a class="nav-link" href="<?= base_url('registrar') ?>">Registrarse</a>
                     <a class="nav-link" href="<?= base_url('iniciarsesion') ?>">Iniciar Sesión</a>
-                <?php endif; ?>
-                <!-- Si la sesion ESTA iniciada, se HABILITAN estas opciones -->
-                <?php if (session()->get('logged_in') == true): ?>
+                <?php else: ?>
                     <a class="btn btn-primary ms-2" href="<?= base_url('cerrarSesion') ?>">Cerrar sesión</a>
                 <?php endif; ?>
             </div>

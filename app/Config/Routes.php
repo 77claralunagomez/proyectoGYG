@@ -30,16 +30,21 @@ $routes->post('agregarAlCarrito/(:num)', 'CarritoController::agregarAlCarrito/$1
 $routes->post('eliminarDelCarrito/(:num)', 'CarritoController::eliminarDelCarrito/$1');
 
 /* factura */
-// ... otras rutas
 $routes->get('factura/ver/(:num)', 'FacturaController::ver/$1');
 $routes->get('finalizarCompra', 'FacturaController::finalizarCompra');
-// ...
+
 
 /*registrarse */
 $routes->get('registrar', 'UsuariosController::index');
 $routes->post('registrar', 'UsuariosController::crear');
 
 /* Inicio de sesion */
-$routes->get('iniciarsesion', 'IniciarSesionController::index'); // Ajusta según tu controlador de login
+$routes->get('iniciarsesion', 'IniciarSesionController::index');
 $routes->post('autenticar', 'IniciarSesionController::autenticar'); 
 $routes->get('cerrarSesion', 'IniciarSesionController::cerrarSesion');
+
+/* Usuarios */
+$routes->get('admin/dashboard', 'UsuariosController::dashboard');
+$routes->post('eliminarUsuario', 'UsuariosController::eliminarUsuario');
+
+

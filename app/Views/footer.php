@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	<!--aca empieza el contenido visible en pantalla.-->
-	<div class="py-5 container-fluid bg-black text-white">
+	<div class="py-5 container-fluid bg-black text-white sticky-bottom">
 		<!--Footer Links-->
 		<div class="footer-top">
 			<div class="row">
