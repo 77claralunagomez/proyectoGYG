@@ -5,9 +5,11 @@ namespace App\Controllers;
 class Home extends BaseController
 {
     public function index()
-    {
-        return view('index');
-    }
+{
+    $productosModel = new \App\Models\ProductosModel();
+    $data['productos'] = $productosModel->findAll(); // o un subset como productos destacados
+    return view('index', $data);
+}
 
     public function contacto()
     {

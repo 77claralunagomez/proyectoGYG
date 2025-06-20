@@ -22,7 +22,7 @@
             <?= view('footer'); ?>
         </footer>
 
-
+        <script src="<?= base_url('assets/js/jquery.min.js')?>" rel="stylesheet" integrity=" " crossorigin="">  </script>
         <script src="<?= base_url('assets/js/bootstrap.bundle.js')?>" rel="stylesheet" integrity=" " crossorigin=""></script>
         <script src="<?= base_url('assets/js/toast-eliminar.js')?>" rel="stylesheet" integrity=" " crossorigin=""></script>
     
