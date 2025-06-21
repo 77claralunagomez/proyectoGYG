@@ -11,6 +11,12 @@ $routes->get('contacto', 'Home::contacto');
 $routes->get('comercializacion', 'Home::comercializacion');
 $routes->get('aboutUs', 'Home::aboutUs');
 $routes->get('terminos', 'Home::terminos');
+$routes->get('empresa', 'Home::empresa');
+$routes->get('legales', 'Home::legales');
+$routes->get('ayuda', 'Home::ayuda');
+$routes->get('atencion', 'Home::atencion');
+
+
 
 /*Catalogo */
 $routes->get('catalogo', 'ProductosController::index');

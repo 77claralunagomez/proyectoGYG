@@ -3,7 +3,8 @@
 <section class="bg-light text-dark py-5">
     <br>
     <div class="text-center m-5">
-        <h1>Contactanos</h1>
+        <h1>Contacto</h1>
+        <h1>Ante cualquier consulta contactanos!</h1>
         <h3>Mandanos un mensaje y te respondemos al correo lo antes posible</h3>
     </div>
     <br>

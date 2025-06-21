@@ -23,7 +23,7 @@
 		<div class="footer-top">
 			<div class="row">
 				<div class="col-12 col-sm-12 col-md-3 col-lg-3">
-					<h3><a href="https://www.w3schools.com/js/js_output.asp" class="btn btn-outline-light" role="button">Legales</a></h3>
+					<h3><a href="legales" class="btn btn-outline-light" role="button">Legales</a></h3>
 					<ul>
 						<li>Terminos y condiciones</li>
 						<li>Pedidos y devoluciones</li>
@@ -31,24 +31,26 @@
 					</ul>
 				</div>
 				<div class="col-12 col-sm-12 col-md-3 col-lg-3">
-					<h3><a href="https://www.w3schools.com/js/js_output.asp" class="btn btn-outline-light" role="button">Empresa</a></h3>
+					<h3><a href="empresa" class="btn btn-outline-light" role="button">Empresa</a></h3>
 					<ul>
 						<li> Sobre nosotros</li>
 						<li>Politica d privacidad</li>
 					</ul>
 				</div>
 				<div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
-					<h3><a href="https://www.w3schools.com/js/js_output.asp" class="btn btn-outline-light" role="button">Ayuda</a></h3>
+					<h3><a href="ayuda" class="btn btn-outline-light" role="button">Ayuda</a></h3>
 					<ul>
-						<li> Contacto de ayuda</li>
+						<li> Consultas frecuentes</li>
 						<li> Como comprar</li>
 					</ul>
 				</div>
 				<div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
-					<h3><a href="https://www.w3schools.com/js/js_output.asp" class="btn btn-outline-light" role="button">Contacto</a></h3>
+					<h3><a href="atencion" class="btn btn-outline-light" role="button">Atencion</a></h3>
 					<ul>
 						<li>3794778687</li>
-						<li>Venta mayorista</li>
+						<li>gmail</li>
+						<li>horario</li>
+						<li>direccion</li>
 					</ul>
 				</div>
 			</div>

@@ -29,4 +29,23 @@ class Home extends BaseController
     {
         return view('terminos');
     }
+    public function empresa()
+    {
+        return view('empresa');
+    }
+
+    public function legales()
+    {
+        return view('legales');
+    }
+
+    public function ayuda()
+    {
+        return view('ayuda');
+    }
+
+    public function atencion()
+    {
+        return view('atencion');
+    }
 }
