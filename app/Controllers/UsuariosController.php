@@ -52,15 +52,31 @@ class UsuariosController extends BaseController
         $usuarioModel = new UsuariosModel();
         $facturaModel = new FacturaModel();
         $detalleModel = new DetalleFacturaModel();
-
+       
         $data = [
             'totalUsuarios' => $usuarioModel->countAll(),
             'totalFacturas' => $facturaModel->countAll(),
             'totalVentas' => $facturaModel->selectSum('total')->first()['total'] ?? 0,
             'facturas' => $facturaModel->orderBy('fecha_factura', 'DESC')->limit(5)->findAll(),
-            'usuarios' => $usuarioModel->findAll(),
+            'usuariosActivados' =>  $usuarioModel->where('activo', 1)->findAll(),
+            'usuariosDesactivados' =>  $usuarioModel->where('activo', 0)->findAll()
+
         ];
 
         return view('admin/dashboard', $data);
+    }
+
+    public function eliminarUsuario()
+    {
+         if (!session()->get('logged_in') || session()->get('rol') != 1) {
+            return redirect()->to('/');
+        }
+         
+        $id = $this->request->getPost('id_usuario');
+
+        $UsuarioModel = new UsuariosModel();
+        $UsuarioModel->update($id, ['activo' => 0]);
+        return redirect()->to('admin/dashboard')->with('mensaje', 'Producto activado');
+        
     }
 }

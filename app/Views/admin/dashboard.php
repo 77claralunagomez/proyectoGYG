@@ -50,21 +50,21 @@
         </thead>
         <tbody>
           <?php foreach ($facturas as $factura): ?>
-          <tr>
-            <td><?= esc($factura['id_factura']) ?></td>
-            <td><?= esc($factura['id_usuario']) ?></td>
-            <td><?= esc($factura['fecha_factura']) ?></td>
-            <td>$<?= esc($factura['total']) ?></td>
-            <td>
-              <a href="<?= base_url('admin/factura/' . $factura['id_factura']) ?>" class="btn btn-sm btn-info">Ver</a>
-            </td>
-          </tr>
+            <tr>
+              <td><?= esc($factura['id_factura']) ?></td>
+              <td><?= esc($factura['id_usuario']) ?></td>
+              <td><?= esc($factura['fecha_factura']) ?></td>
+              <td>$<?= esc($factura['total']) ?></td>
+              <td>
+                <a href="<?= base_url('admin/factura/' . $factura['id_factura']) ?>" class="btn btn-sm btn-info">Ver</a>
+              </td>
+            </tr>
           <?php endforeach; ?>
         </tbody>
       </table>
     </div>
   </div>
-
+    
   <div class="card">
     <div class="card-header">
       Usuarios registrados
@@ -80,16 +80,44 @@
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($usuarios as $u): ?>
+          <?php foreach ($usuariosActivados as $u): ?>
+            <tr>
+              <td><?= esc($u['id_usuario']) ?></td>
+              <td><?= esc($u['email']) ?></td>
+              <td><?= esc($u['rol']) ?></td>
+              <td>
+                <form action="<?= base_url('admin/usuario/eliminar') ?>" method="post" style="display:inline;">
+                  <?= csrf_field() ?>
+                  <input type="hidden" name="id_usuario" value="<?= esc($u['id_usuario']) ?>">
+                  <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                </form>
+               
+              </td>
+
+            </tr>
+
+          <?php endforeach; ?>
+          
+        </tbody>
+      </table>
+      <div class="card-header">
+      Usuarios Desactivados
+      </div>
+       <table class="table table-bordered">
+        <thead>
           <tr>
-            <td><?= esc($u['id_usuario']) ?></td>
-            <td><?= esc($u['email']) ?></td>
-            <td><?= esc($u['rol']) ?></td>
-            <td>
-              <a href="<?= base_url('admin/usuario/editar/' . $u['id_usuario']) ?>" class="btn btn-warning btn-sm">Editar</a>
-              <a href="<?= base_url('admin/usuario/eliminar/' . $u['id_usuario']) ?>" class="btn btn-danger btn-sm">Eliminar</a>
-            </td>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Rol</th>
           </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($usuariosDesactivados as $u): ?>
+            <tr>
+              <td><?= esc($u['id_usuario']) ?></td>
+              <td><?= esc($u['email']) ?></td>
+              <td><?= esc($u['rol']) ?></td>
+            </tr>
           <?php endforeach; ?>
         </tbody>
       </table>
