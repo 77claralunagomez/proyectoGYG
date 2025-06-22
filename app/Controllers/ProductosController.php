@@ -22,7 +22,7 @@ class ProductosController extends BaseController
     {
 
         if (!session()->get('logged_in') || session()->get('rol') != 1) {
-            return redirect()->to('/');   
+            return redirect()->to('/');
         }
         return view('agregarproducto');
     }
@@ -124,13 +124,36 @@ class ProductosController extends BaseController
         }
 
         $imagen = $this->request->getFile('imagen');
-        $rutaImagen = null;
+        $rutaImagen = $this->request->getPost('imagen_actual'); // Se usa por defecto
 
         if ($imagen && $imagen->isValid() && !$imagen->hasMoved()) {
-            $nombreImagen = $imagen->getRandomName(); // nombre aleatorio
-            $imagen->move('public/uploads/productos/', $nombreImagen);
-            $rutaImagen = 'public/uploads/productos/' . $nombreImagen;
+            // lógica para guardar imagen nueva si fue subida
+            $nombreOriginal = $imagen->getName();
+            $hashSubida = md5_file($imagen->getTempName());
+            $directorio = 'public/uploads/productos/';
+            $rutaCompletaDestino = $directorio . $nombreOriginal;
+
+            $imagenYaExiste = false;
+
+            if (file_exists($rutaCompletaDestino)) {
+                $hashExistente = md5_file($rutaCompletaDestino);
+                if ($hashExistente === $hashSubida) {
+                    $imagenYaExiste = true;
+                } else {
+                    $nombreSinExtension = pathinfo($nombreOriginal, PATHINFO_FILENAME);
+                    $extension = $imagen->getClientExtension();
+                    $nombreOriginal = $nombreSinExtension . '_' . time() . '.' . $extension;
+                    $rutaCompletaDestino = $directorio . $nombreOriginal;
+                }
+            }
+
+            if (!$imagenYaExiste) {
+                $imagen->move($directorio, $nombreOriginal);
+            }
+
+            $rutaImagen = $rutaCompletaDestino;
         }
+
 
         // Guardá el producto
         $productoModel = new ProductosModel();
@@ -166,16 +189,17 @@ class ProductosController extends BaseController
         if (!session()->get('logged_in') || session()->get('rol') != 1) {
             return redirect()->to('/');
         }
-       
+
         $productoModel = new ProductosModel();
 
         $resultado = $productoModel->where('activo', 0)->findAll(); // devuelve cada uno de los productos de array
         // Puedes pasar los datos a la vista
-        return view('productos-desactivados', ['productos' => $resultado]); 
+        return view('productos-desactivados', ['productos' => $resultado]);
     }
 
-    public function desactivarProducto() {
-       if (!session()->get('logged_in') || session()->get('rol') != 1) {
+    public function desactivarProducto()
+    {
+        if (!session()->get('logged_in') || session()->get('rol') != 1) {
             return redirect()->to('/');
         }
 
@@ -184,11 +208,11 @@ class ProductosController extends BaseController
         $productoModel = new ProductosModel();
         $productoModel->update($id, ['activo' => 0]);
         return redirect()->to('catalogo')->with('mensaje', 'Producto eliminado correctamente');
- 
     }
 
-    public function activarProducto() {
-       if (!session()->get('logged_in') || session()->get('rol') != 1) {
+    public function activarProducto()
+    {
+        if (!session()->get('logged_in') || session()->get('rol') != 1) {
             return redirect()->to('/');
         }
 
@@ -197,6 +221,7 @@ class ProductosController extends BaseController
         $productoModel = new ProductosModel();
         $productoModel->update($id, ['activo' => 1]);
         return redirect()->to('productos-desactivados')->with('mensaje', 'Producto activado');
- 
     }
+
+    
 }

@@ -33,6 +33,13 @@
     </div>
   </div>
 
+  <form class="mb-3" method="get">
+  <div class="input-group">
+    <input type="text" name="buscar_factura" class="form-control" placeholder="Buscar facturas..." value="<?= esc($busquedaFactura) ?>">
+    <button class="btn btn-outline-primary" type="submit">Buscar</button>
+  </div>
+</form>
+
   <div class="card mb-4">
     <div class="card-header">
       Últimas Facturas
@@ -52,7 +59,7 @@
           <?php foreach ($facturas as $factura): ?>
             <tr>
               <td><?= esc($factura['id_factura']) ?></td>
-              <td><?= esc($factura['id_usuario']) ?></td>
+              <td><?= esc($factura['nombre_usuario']) ?></td>
               <td><?= esc($factura['fecha_factura']) ?></td>
               <td>$<?= esc($factura['total']) ?></td>
               <td>

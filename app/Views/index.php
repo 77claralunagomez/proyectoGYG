@@ -50,7 +50,8 @@
 
 <!-- PRODUCTOS DESTACADOS -->
 <?php
-$chunkedProductos = array_chunk($productos, 4); // 4 productos por slide
+$productosConStock = array_filter($productos, fn($p) => $p['stock'] > 0);
+$chunkedProductos = array_chunk($productosConStock, 4);
 ?>
 
 <section class="bg-light my-3 py-5 px-5">

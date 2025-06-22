@@ -36,14 +36,24 @@
             <label for="categoria" class="form-label">cantegoria</label>
             <select class="form-select" id="categoria" name="categoria" required>
                 <option value="">seleccionar categoria</option>
-                <option value="1">lentes de sol</option>
-                <option value="2">lentes de vista</option>
+                <option value="1" <?= $producto['categoria'] == 1 ? 'selected' : '' ?>>lentes de sol</option>
+                <option value="2" <?= $producto['categoria'] == 2 ? 'selected' : '' ?>>lentes de vista</option>
+
             </select>
         </div>
 
         <div class="mb-3">
             <label for="imagen" class="form-label">Imagen del producto</label>
             <input class="form-control" type="file" id="imagen" name="imagen" value="<?= set_value('imagen'); ?>">
+            <input type="hidden" name="imagen_actual" value="<?= $producto['url_imagen']; ?>">
+            
+            <?php if (!empty($producto['url_imagen'])): ?>
+                <div class="mt-2">
+                    <img src="<?= base_url($producto['url_imagen']) ?>" alt="Imagen actual" style="max-width: 150px;">
+                    <input type="hidden" name="imagen_actual" value="<?= $producto['url_imagen'] ?>">
+                </div>
+            <?php endif; ?>
+
         </div>
 
         <div class="col-12">

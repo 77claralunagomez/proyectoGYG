@@ -11,6 +11,12 @@
         </div>
     <?php endif; ?>
 
+    <!-- Productos -->
+    <section class="col-md-9" id="contenedor-productos">
+        <?php foreach ($productos as $producto): ?>
+            <!-- Aquí va tu código actual que muestra los productos -->
+        <?php endforeach; ?>
+    </section>
     <div class="row">
         <?php if (!empty($productos)) : ?>
             <?php foreach ($productos as $producto) : ?>

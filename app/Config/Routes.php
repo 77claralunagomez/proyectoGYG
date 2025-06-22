@@ -53,5 +53,7 @@ $routes->get('cerrarSesion', 'IniciarSesionController::cerrarSesion');
 /* Usuarios */
 $routes->get('admin/dashboard', 'UsuariosController::dashboard');
 $routes->post('admin/usuario/eliminar', 'UsuariosController::eliminarUsuario');
+$routes->get('admin/factura/(:num)', 'UsuariosController::verFactura/$1');
+
 
 
