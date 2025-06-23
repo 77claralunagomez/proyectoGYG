@@ -29,7 +29,7 @@ class UsuariosController extends BaseController
 
         // Base de la consulta de facturas
         $facturaQuery = $facturaModel
-            ->select('factura.*, usuarios.nombre AS nombre_usuario')
+            ->select('factura.*, usuarios.nombre')
             ->join('usuarios', 'usuarios.id_usuario = factura.id_usuario')
             ->orderBy('fecha_factura', 'DESC');
 
@@ -42,7 +42,7 @@ class UsuariosController extends BaseController
                 ->groupEnd();
         }
 
-        $facturas = $facturaQuery->findAll(5);
+        $facturas = $facturaQuery->findAll(10);
 
         // Datos para la vista
         $data = [

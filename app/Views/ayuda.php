@@ -9,7 +9,7 @@
         </div>
 
         <p style="text-align: justify;">
-            Realizar una compra en <strong>Tienda Microfast</strong> es muy simple. Seguí estos pasos:
+            Realizar una compra en <strong>optica GYG</strong> es muy simple. Seguí estos pasos:
         </p>
 
         <ol style="text-align: justify;">

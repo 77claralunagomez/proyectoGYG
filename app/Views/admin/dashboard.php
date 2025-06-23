@@ -59,7 +59,7 @@
           <?php foreach ($facturas as $factura): ?>
             <tr>
               <td><?= esc($factura['id_factura']) ?></td>
-              <td><?= esc($factura['nombre_usuario']) ?></td>
+              <td><?= esc($factura['nombre']) ?></td>
               <td><?= esc($factura['fecha_factura']) ?></td>
               <td>$<?= esc($factura['total']) ?></td>
               <td>

@@ -66,5 +66,11 @@ input[type="search"] {
     color: black;
 }
 
+.boton-footer {
+  min-width: 120px;
+  text-align: center;
+}
+
+
 /*z-index determina qué elementos se muestran por encima de otros*
   

@@ -2,7 +2,7 @@
     <div class="container-fluid d-flex align-items-center">
 
         <a class="navbar-brand" href="<?= base_url() ?>"><img src="<?= base_url('assets/img/svg/icon_eyeglasses.svg') ?>"
-                width="38" height="38"> G&G Óptica</a>
+                width="38" height="38"></a>
 
         <?php if (session()->get('logged_in')): ?>
             <p class="text-light text-end p-auto">Bienvenido, <?= session()->get('nombre') ?></p>
