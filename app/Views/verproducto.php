@@ -20,7 +20,7 @@
                     <div class="col-md-7">
                         <div class="card-body">
                             <h3 class="card-title"><?= esc($producto['nombre']) ?></h3>
-                            <p class="card-text"><?= esc($producto['descripcion']) ?></p>
+                            <p class="card-text"><?= nl2br(esc($producto['descripcion'])) ?></p>
                             <h4 class="text-primary">$<?= number_format($producto['precio'], 2) ?></h4>
 
                             <p class="card-text"><small class="text-muted">Stock: <?= esc($producto['stock']) ?> disponibles</small></p>

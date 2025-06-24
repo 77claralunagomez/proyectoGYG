@@ -18,7 +18,8 @@
 
         <div class="col-md-8">
             <label for="descripcion" class="form-label">Descripcion</label>
-            <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?= $producto['descripcion']; ?>" required>
+            <textarea class="form-control" id="descripcion" name="descripcion" value="<?= $producto['descripcion']; ?>" required>
+            </textarea>
         </div>
 
         <div class="col-md-6">

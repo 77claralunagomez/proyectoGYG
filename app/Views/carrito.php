@@ -1,7 +1,7 @@
 <?= $this->extend('plantilla'); ?>
 <?= $this->section('content'); ?>
 
-<div class="container mt-5 ">
+<div class="container mt-5 my-5 py-5">
     <div class="mt-5 mt-carousel">.</div>
     <h2 class="mb-4">🛒 Carrito de Compras</h2>
 

@@ -2,17 +2,17 @@
 <?= $this->extend('plantilla') ?>
 
 <?= $this->section('content') ?>
-<div class="container mt-5 my-5 mt-carousel">
-    
-<div class="mt-5 mt-carousel">.</div>
+<div class="container mt-5 my-5 mt-carousel py-5">
+
+    <div class="mt-5 mt-carousel">.</div>
     <h2 class="mb-4">Factura Nº <?= esc($factura['id_factura']) ?></h2>
 
     <div class="row mb-3">
         <?php if (session()->has('error')): ?>
-                <div class="alert alert-danger">
-                    <?= session('error') ?>
-                </div>
-            <?php endif; ?>
+            <div class="alert alert-danger">
+                <?= session('error') ?>
+            </div>
+        <?php endif; ?>
         <div class="col-md-6">
             <p><strong>Cliente:</strong> <?= esc($factura['nombre_cliente']) ?></p>
         </div>

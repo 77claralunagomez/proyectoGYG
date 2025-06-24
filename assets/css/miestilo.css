@@ -71,6 +71,11 @@ input[type="search"] {
   text-align: center;
 }
 
+.form-signin {
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+}
 
 /*z-index determina qué elementos se muestran por encima de otros*
   

@@ -1,7 +1,7 @@
 <?= $this->extend('plantilla') ?>
 <?= $this->section('content') ?>
 
-<div class="container py-5">
+<div class="container py-5 my-5">
     <h1 class="text-center mb-4">Listado de Consultas</h1>
 
     <?php if (session()->getFlashdata('mensaje')): ?>

@@ -1,7 +1,7 @@
 <?= $this->extend('plantilla') ?>
 <?= $this->section('content') ?>
 
-<div class="container mt-5">
+<div class="container mt-5 my-5 py-5">
   <h2 class="mb-4">Factura #<?= esc($factura['id_factura']) ?></h2>
 
   <div class="card mb-4">

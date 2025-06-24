@@ -1,7 +1,7 @@
 <?= $this->extend('plantilla'); ?>
 <?= $this->section('content'); ?>
 
-<div class="container mt-5 my-5">
+<div class="container mt-5 my-5 py-5">
     <h1 class="mb-4">Lista de Productos</h1>
 
     <?php if (session()->get('rol') == 1): ?>
@@ -20,7 +20,7 @@
     <div class="row">
         <?php if (!empty($productos)) : ?>
             <?php foreach ($productos as $producto) : ?>
-                <div class="col-md-3 mb-4">
+                <div class="col-6 col-md-3 mb-4">
                     <div class="card h-100 position-relative">
                         <div class="position-relative">
                             <img src="<?= base_url($producto['url_imagen']) ?>" class="card-img-top" alt="<?= esc($producto['nombre']) ?>" style="height: 200px; object-fit: cover;">
