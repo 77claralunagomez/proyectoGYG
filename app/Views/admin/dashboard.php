@@ -34,11 +34,11 @@
   </div>
 
   <form class="mb-3" method="get">
-  <div class="input-group">
-    <input type="text" name="buscar_factura" class="form-control" placeholder="Buscar facturas..." value="<?= esc($busquedaFactura) ?>">
-    <button class="btn btn-outline-primary" type="submit">Buscar</button>
-  </div>
-</form>
+    <div class="input-group">
+      <input type="text" name="buscar_factura" class="form-control" placeholder="Buscar facturas..." value="<?= esc($busquedaFactura) ?>">
+      <button class="btn btn-outline-primary" type="submit">Buscar</button>
+    </div>
+  </form>
 
   <div class="card mb-4">
     <div class="card-header">
@@ -71,60 +71,84 @@
       </table>
     </div>
   </div>
-    
+
+  <form class="mb-3" method="get">
+    <div class="input-group">
+      <input type="text" name="buscar_usuario" class="form-control" placeholder="Buscar un usuario" value="<?= esc($busquedaUsuarios) ?>">
+      <button class="btn btn-outline-primary" type="submit">Buscar</button>
+    </div>
+  </form>
   <div class="card">
     <div class="card-header">
       Usuarios registrados
     </div>
     <div class="card-body table-responsive">
+
+      <!-- Tabla de usuarios activos -->
       <table class="table table-bordered">
         <thead>
           <tr>
             <th>ID</th>
+            <th>Nombre</th>
             <th>Email</th>
             <th>Rol</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($usuariosActivados as $u): ?>
-            <tr>
-              <td><?= esc($u['id_usuario']) ?></td>
-              <td><?= esc($u['email']) ?></td>
-              <td><?= esc($u['rol']) ?></td>
-              <td>
-                <form action="<?= base_url('admin/usuario/eliminar') ?>" method="post" style="display:inline;">
-                  <?= csrf_field() ?>
-                  <input type="hidden" name="id_usuario" value="<?= esc($u['id_usuario']) ?>">
-                  <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                </form>
-               
-              </td>
-
-            </tr>
-
+          <?php foreach ($usuarios as $u): ?>
+            <?php if ($u['activo'] == 1): ?>
+              <tr>
+                <td><?= esc($u['id_usuario']) ?></td>
+                <td><?= esc($u['nombre']) ?></td>
+                <td><?= esc($u['email']) ?></td>
+                <td><?= esc($u['rol']) ?></td>
+                <td>
+                  <form action="<?= base_url('admin/usuario/eliminar') ?>" method="post" style="display:inline;">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="id_usuario" value="<?= esc($u['id_usuario']) ?>">
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                  </form>
+                </td>
+              </tr>
+            <?php endif; ?>
           <?php endforeach; ?>
-          
         </tbody>
       </table>
+      </tbody>
+      </table>
+
       <div class="card-header">
-      Usuarios Desactivados
+        Usuarios Desactivados
       </div>
-       <table class="table table-bordered">
+      <!-- Tabla de usuarios desactivados -->
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th>ID</th>
+            <th>Nombre</th>
             <th>Email</th>
             <th>Rol</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($usuariosDesactivados as $u): ?>
-            <tr>
-              <td><?= esc($u['id_usuario']) ?></td>
-              <td><?= esc($u['email']) ?></td>
-              <td><?= esc($u['rol']) ?></td>
-            </tr>
+          <?php foreach ($usuarios as $u): ?>
+            <?php if ($u['activo'] == 0): ?>
+              <tr>
+                <td><?= esc($u['id_usuario']) ?></td>
+                <td><?= esc($u['nombre']) ?></td>
+                <td><?= esc($u['email']) ?></td>
+                <td><?= esc($u['rol']) ?></td>
+                <td>
+                  <form action="<?= base_url('admin/usuario/activar') ?>" method="post" style="display:inline;">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="id_usuario" value="<?= esc($u['id_usuario']) ?>">
+                    <button type="submit" class="btn btn-success btn-sm">Activar</button>
+                  </form>
+                </td>
+              </tr>
+            <?php endif; ?>
           <?php endforeach; ?>
         </tbody>
       </table>

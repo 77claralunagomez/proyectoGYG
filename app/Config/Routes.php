@@ -44,6 +44,8 @@ $routes->get('finalizarCompra', 'FacturaController::finalizarCompra');
 $routes->get('registrar', 'UsuariosController::index');
 $routes->post('registrar', 'UsuariosController::crear');
 
+/* Consultas */
+$routes->post('consulta/enviar', 'ConsultasController::enviar');
 
 /* Inicio de sesion */
 $routes->get('iniciarsesion', 'IniciarSesionController::index');
@@ -53,6 +55,7 @@ $routes->get('cerrarSesion', 'IniciarSesionController::cerrarSesion');
 /* Usuarios */
 $routes->get('admin/dashboard', 'UsuariosController::dashboard');
 $routes->post('admin/usuario/eliminar', 'UsuariosController::eliminarUsuario');
+$routes->post('admin/usuario/activar', 'UsuariosController::activarUsuario');
 $routes->get('admin/factura/(:num)', 'UsuariosController::verFactura/$1');
 
 

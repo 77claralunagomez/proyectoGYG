@@ -26,6 +26,7 @@ class UsuariosController extends BaseController
 
         // Capturamos el término de búsqueda (puede venir vacío o no estar)
         $busquedaFactura = $this->request->getGet('buscar_factura');
+        $busquedaUsuarios = $this->request->getGet('buscar_usuario');
 
         // Base de la consulta de facturas
         $facturaQuery = $facturaModel
@@ -42,12 +43,30 @@ class UsuariosController extends BaseController
                 ->groupEnd();
         }
 
-        $facturas = $facturaQuery->findAll(10);
+        $usuarioQuery = $usuarioModel
+            ->select('usuarios.*')
+            ->orderBy('id_usuario', 'DESC');
+
+        if ($busquedaUsuarios !== null && $busquedaUsuarios !== '') {
+            $usuarioQuery
+                ->groupStart()
+                ->like('usuarios.nombre', $busquedaUsuarios)
+                ->orLike('usuarios.id_usuario', $busquedaUsuarios)
+                ->orLike('usuarios.email', $busquedaUsuarios)
+                ->groupEnd();
+        }
+
+        $facturas = $facturaQuery->findAll(15);
+        $usuarios = $usuarioQuery->findAll(15);
+
 
         // Datos para la vista
         $data = [
             'facturas' => $facturas,
+            'usuarios' => $usuarios,
+
             'busquedaFactura' => $busquedaFactura,
+            'busquedaUsuarios' => $busquedaUsuarios,
 
             'totalUsuarios' => $usuarioModel->countAll(),
             'totalFacturas' => $facturaModel->countAll(),
@@ -71,7 +90,20 @@ class UsuariosController extends BaseController
 
         $UsuarioModel = new UsuariosModel();
         $UsuarioModel->update($id, ['activo' => 0]);
-        return redirect()->to('admin/dashboard')->with('mensaje', 'Producto activado');
+        return redirect()->to('admin/dashboard')->with('mensaje', 'Usuario Desactivado');
+    }
+
+    public function activarUsuario()
+    {
+        if (!session()->get('logged_in') || session()->get('rol') != 1) {
+            return redirect()->to('/');
+        }
+
+        $id = $this->request->getPost('id_usuario');
+
+        $UsuarioModel = new UsuariosModel();
+        $UsuarioModel->update($id, ['activo' => 1]);
+        return redirect()->to('admin/dashboard')->with('mensaje', 'Usuario Activado');
     }
 
     public function verFactura($idFactura)
@@ -81,7 +113,7 @@ class UsuariosController extends BaseController
         }
 
         $facturaModel = new FacturaModel();
-        
+
 
         // Buscar factura con datos del usuario
         $factura = $facturaModel
