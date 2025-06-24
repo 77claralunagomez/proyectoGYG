@@ -7,7 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-$routes->get('contacto', 'Home::contacto');
+$routes->get('contacto', 'ConsultasController::index');
 $routes->get('comercializacion', 'Home::comercializacion');
 $routes->get('aboutUs', 'Home::aboutUs');
 $routes->get('terminos', 'Home::terminos');

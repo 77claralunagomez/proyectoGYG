@@ -50,7 +50,7 @@ class ProductosController extends BaseController
         $rutaImagen = null;
 
         if ($imagen && $imagen->isValid() && !$imagen->hasMoved()) {
-            $nombreImagen = $imagen->getRandomName(); // nombre aleatorio
+            $nombreImagen = $imagen->getClientName();
             $imagen->move('public/uploads/productos/', $nombreImagen);
             $rutaImagen = 'public/uploads/productos/' . $nombreImagen;
         }

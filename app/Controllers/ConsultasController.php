@@ -14,7 +14,6 @@ class ConsultasController extends BaseController
 
     public function enviar()
     {
-        log_message('debug', 'Método de la petición: ' . $this->request->getMethod());
         if ($this->request->getMethod() === 'POST') {
             $consultaModel = new ConsultasModel();
 
@@ -61,6 +60,10 @@ class ConsultasController extends BaseController
 
     public function verConsultas()
     {
+        if (!session()->get('logged_in') || session()->get('rol') != 1) {
+            return redirect()->to('/');
+        }
+
         $consultaModel = new ConsultasModel();
         $consultas = $consultaModel->findAll();
         return view('admin/verconsultas', ['consultas' => $consultas]);
