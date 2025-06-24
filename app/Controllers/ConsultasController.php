@@ -61,6 +61,8 @@ class ConsultasController extends BaseController
 
     public function verConsultas()
     {
-        
+        $consultaModel = new ConsultasModel();
+        $consultas = $consultaModel->findAll();
+        return view('admin/verconsultas', ['consultas' => $consultas]);
     }
 }

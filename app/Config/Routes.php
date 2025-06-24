@@ -57,6 +57,7 @@ $routes->get('admin/dashboard', 'UsuariosController::dashboard');
 $routes->post('admin/usuario/eliminar', 'UsuariosController::eliminarUsuario');
 $routes->post('admin/usuario/activar', 'UsuariosController::activarUsuario');
 $routes->get('admin/factura/(:num)', 'UsuariosController::verFactura/$1');
+$routes->get('admin/verconsultas', 'ConsultasController::verConsultas');
 
 
 

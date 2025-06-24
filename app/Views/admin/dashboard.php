@@ -1,8 +1,9 @@
-<!-- app/Views/admin/dashboard.php -->
 <?= $this->extend('plantilla') ?>
 <?= $this->section('content') ?>
 
 <div class="container mt-5">
+
+  <a href="<?= base_url('admin/verconsultas'); ?>" class="btn btn-info btn-lg my-4">Consultas</a>
 
   <h2 class="mb-4">Panel de Administración</h2>
 
