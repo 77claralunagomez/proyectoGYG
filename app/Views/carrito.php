@@ -33,7 +33,7 @@
                         <td>
                             <form action="<?= base_url('eliminarDelCarrito/' . $item['id']) ?>" method="post">
                                 <?= csrf_field() ?>
-                                <button type="submit" class="btn btn-danger btn-sm">🗑 Eliminar</button>
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                             </form>
                         </td>
                     </tr>
@@ -47,15 +47,15 @@
         </table>
 
         <div class="d-flex justify-content-between mt-4">
-            <a href="<?= base_url('catalogo') ?>" class="btn btn-outline-primary">🛍️ Seguir Comprando</a>
+            <a href="<?= base_url('catalogo') ?>" class="btn btn-outline-primary">Seguir Comprando</a>
 
             <?php $loggedIn = session()->get('logged_in'); ?>
             <?php if (!$loggedIn): ?>
                   
-                <a href="<?= base_url('iniciarsesion') ?>" class="btn btn-success">💳 Finalizar Compra</a>
+                <a href="<?= base_url('iniciarsesion') ?>" class="btn btn-success">Finalizar Compra</a>
             
             <?php else: ?>
-                <a href="<?= base_url('finalizarCompra') ?>" class="btn btn-success">💳 Finalizar Compra</a>
+                <a href="<?= base_url('finalizarCompra') ?>" class="btn btn-success">Finalizar Compra</a>
                 <?= csrf_field() ?>
 
             <?php endif; ?>

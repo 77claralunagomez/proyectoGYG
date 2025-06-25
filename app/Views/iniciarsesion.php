@@ -20,7 +20,7 @@
                     <input type="password" class="form-control" name="pass" id="pass" required>
                 </div>
     
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-dark">
                     Ingresar
                 </button>
             </form>

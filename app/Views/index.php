@@ -74,9 +74,9 @@ $chunkedProductos = array_chunk($productosConStock, 4);
                                         <h5 class="card-title text-truncate"><?= esc($producto['nombre']) ?></h5>
 
                                         <div>
-                                            <span class="fw-bold text-danger">$<?= number_format($producto['precio'], 2, ',', '.') ?></span>
+                                            <span class="fw-bold text-primary">$<?= number_format($producto['precio'], 2, ',', '.') ?></span>
                                         </div>
-                                        <a href="<?= base_url('producto/' . $producto['id_producto']) ?>" class="btn btn-info btn-sm mt-auto">Ver</a>
+                                        <a href="<?= base_url('producto/' . $producto['id_producto']) ?>" class="btn btn-dark btn-sm mt-auto">Ver</a>
                                     </div>
                                 </div>
                             </div>

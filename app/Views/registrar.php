@@ -40,7 +40,7 @@
                     <input type="password" class="form-control" name="repassword" id="repassword" required>
                 </div>
     
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-dark">
                     Registrar
                 </button>
             </form>

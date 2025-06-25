@@ -41,7 +41,7 @@
                         <textarea class="form-control border-black" name="mensaje" rows="5" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Enviar Consulta</button>
+                    <button type="submit" class="btn btn-dark">Enviar Consulta</button>
                 </form>
             </div>
         </div>

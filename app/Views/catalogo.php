@@ -44,7 +44,7 @@
                             <h5 class="card-title"><?= esc($producto['nombre']) ?></h5>
                             <p class="card-text mb-1">Precio: $<?= number_format($producto['precio'], 2) ?></p>
                             <p class="card-text">Stock: <?= esc($producto['stock']) ?></p>
-                            <a href="<?= base_url('producto/' . $producto['id_producto']) ?>" class="btn btn-info btn-sm mt-auto">Ver</a>
+                            <a href="<?= base_url('producto/' . $producto['id_producto']) ?>" class="btn btn-dark btn-sm mt-auto">Ver</a>
                         </div>
                     </div>
                 </div>
