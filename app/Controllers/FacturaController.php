@@ -56,7 +56,7 @@ class FacturaController extends BaseController
         $detalleFacturaModel = new DetalleFacturaModel();
         $productoModel = new ProductosModel();
 
-        // 1. Traer los ítems del carrito
+        //Traer los ítems del carrito
         $items = $carritoModel
             ->select('carrito.*, productos.precio as precio_unitario, productos.stock as stock_actual')
             ->join('productos', 'productos.id_producto = carrito.id_producto')
@@ -67,27 +67,27 @@ class FacturaController extends BaseController
             return redirect()->back()->with('error', 'El carrito está vacío.');
         }
 
-        // 2. Validar stock disponible
+        //Validar stock disponible
         foreach ($items as $item) {
             if ($item['cantidad'] > $item['stock_actual']) {
                 return redirect()->back()->with('error', "No hay suficiente stock para el producto ID {$item['id_producto']}. Stock disponible: {$item['stock_actual']}.");
             }
         }
 
-        // 3. Calcular total
+        // Calcular total
         $total = 0;
         foreach ($items as $item) {
             $total += $item['cantidad'] * $item['precio_unitario'];
         }
 
-        // 4. Insertar la factura
+        //Insertar la factura
         $idFactura = $facturaModel->insert([
             'id_usuario' => $usuarioId,
             'fecha_factura' => date('Y-m-d H:i:s'),
             'total' => $total,
         ]);
 
-        // 5. Insertar los detalles y actualizar stock
+        // Insertar los detalles y actualizar stock
         foreach ($items as $item) {
             $detalleFacturaModel->insert([
                 'id_factura' => $idFactura,
@@ -111,10 +111,10 @@ class FacturaController extends BaseController
             $productoModel->update($item['id_producto'], $datosActualizacion);
         }
 
-        // 6. Vaciar el carrito del usuario
+        //Vaciar el carrito del usuario
         $carritoModel->where('id_usuario', $usuarioId)->delete();
 
-        // 7. Redirigir a la vista de la factura
+        //Redirigir a la vista de la factura
         return redirect()->to('factura/ver/' . $idFactura);
     }
 }
